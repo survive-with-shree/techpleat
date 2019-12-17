@@ -1,2 +1,0 @@
-# techpleat
-techpleat org :)
