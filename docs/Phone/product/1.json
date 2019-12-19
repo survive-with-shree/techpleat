@@ -3,21 +3,5 @@
     "name" : "OnePlus 7",
     "brand" : "OnePlus",
     "price" : "₹26949,$409.99,£313.16,€549.99",
-
-    "specifications" : {
-        "size" : "55cm",
-        "wheel_size" : "700c",
-        "frameset" : {
-            "frame" : "Carbon Enduro",
-            "fork" : "Gabel 2"
-         },
-        "groupset" : {
-            "chainset" : "Kette 230",
-            "brake" : "Bremse FullStop"
-	    },
-        "wheelset" : {
-	        "wheels" : "Rad Schnell 10",
-	        "tyres" : "Reifen Pro"
-        }
-    }
+    "Launch Date" : "May 16, 2019",
 }
