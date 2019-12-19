@@ -1,6 +1,5 @@
 "specifications" :
 {
-
   {
     "name": "RAM",
     "value": "8gb"
@@ -22,16 +21,16 @@
     "value": "6.67 inches"
   },
   {
-    "name": "Screen Resolution",
-    "value": "1440 x 3120 pixels"
-  },
-  {
     "name": "Display Type",
     "value": "Fluid AMOLED"
+  },
+  {
+    "name": "Screen Resolution",
+    "value": "1440 x 3120 pixels"
   },
   {
     "name": "Graphics",
     "value": "Adreno 640"
   },
-  
+
 }
