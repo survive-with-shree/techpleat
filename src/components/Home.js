@@ -20,9 +20,10 @@ export default class Home extends React.Component {
       .then(res => res.json())
       .then(
         (result) => {
+          console.debug(result)
           this.setState({
             isLoaded: true,
-            category: result
+            category: result.category
           });
         },
         (error) => {
@@ -35,28 +36,23 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const repoReadmeLink = text => (
-      <Interactive
-        as="a"
-        {...s.link}
-        href="https://github.com/survive-with-shree/techpleat#readme"
-      >{text}</Interactive>
-    );
-    
     return (
       <div>
-        <p style={s.p}>
-          Checkout TeachPleat's {repoReadmeLink('GitHub repo')} for instructions to contribute and support our opensource platform.
-        </p>
         <div style={s.pageLinkContainer}>
-          <Interactive
-            as={Link}
-            {...s.link}
-            to="/category?id=mobile"
-          >Mobile</Interactive>
+          <ol>
+            {this.state.category.map((item, index) => (
+              <li>
+                <Interactive
+                  as={Link}
+                  {...s.link}
+                  to={`/category?cid=${item.toLowerCase()}`}>
+                  {item}
+                </Interactive>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     );
-
   }
 }
