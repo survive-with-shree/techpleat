@@ -1,5 +1,4 @@
-"specifications" :
-{
+[   
   {
     "name": "RAM",
     "value": "8gb"
@@ -31,6 +30,5 @@
   {
     "name": "Graphics",
     "value": "Adreno 640"
-  },
-
-}
+  }
+]
