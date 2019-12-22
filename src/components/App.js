@@ -38,7 +38,7 @@ export default function App() {
           touchActive={{}}
           touchActiveTapOnly
         >
-          Code and concept by <span {...s.childLink}>Devendra Parhate</span>
+          Code and concept by <span {...s.childLink}>Devendra Parhate and Shreejit Verma</span>
         </Interactive>
       </div>
     </div>
