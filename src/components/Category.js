@@ -12,6 +12,7 @@ const ExamplePageText = () => (
 );
 
 export default function Category() {
+    
   return (
     <Switch>
       <Route
