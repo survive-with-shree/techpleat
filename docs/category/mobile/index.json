@@ -1,10 +1,10 @@
 {
-    "product": {
-        "0": {
-            "name": "OnePlus 7",
-            "brand": "OnePlus",
-            "price": "₹26949,$409.99,£313.16,€549.99",
-            "launchDate": "May 16, 2019"
-        }
+  "product": {
+    "0": {
+      "name": "OnePlus 7",
+      "brand": "OnePlus",
+      "price": "₹26949,$409.99,£313.16,€549.99",
+      "launchDate": "May 16, 2019"
     }
+  }
 }
