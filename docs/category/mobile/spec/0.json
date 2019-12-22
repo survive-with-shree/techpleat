@@ -1,0 +1,36 @@
+{
+  "spec": [   
+    {
+      "name": "RAM",
+      "value": "8gb"
+    },
+    {
+      "name": "Chipset",
+      "value": "Qualcomm Snapdragon 855"
+    },
+    {
+      "name": "Rear Camera",
+      "value": "48 MP + 16 MP + 8 MP"
+    },
+    {
+      "name": "Front Camera",
+      "value": "16 MP"
+    },
+    {
+      "name": "Display",
+      "value": "6.67 inches"
+    },
+    {
+      "name": "Display Type",
+      "value": "Fluid AMOLED"
+    },
+    {
+      "name": "Screen Resolution",
+      "value": "1440 x 3120 pixels"
+    },
+    {
+      "name": "Graphics",
+      "value": "Adreno 640"
+    }
+  ]
+}

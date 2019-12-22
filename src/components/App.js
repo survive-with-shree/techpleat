@@ -11,7 +11,7 @@ export default function App() {
   return (
     <div style={s.root}>
       <h1 style={s.title}>TechPleat</h1>
-      <h3> Open source platform of reviews by crowed sourced reviewers </h3>
+      <h3> Open source platform of reviews by crowd sourced reviewers </h3>
       <Interactive
         as="a"
         href="https://github.com/survive-with-shree/techpleat"
