@@ -40,8 +40,8 @@ export default class Category extends React.Component {
     let params = queryString.parse(location.search)
     return (
       <div style={s.productList}>
-        {this.state.product.map((item) => (
-          <div style={s.productCard}>
+        {this.state.product.map((item, index) => (
+          <div style={s.productCard} key={index}>
             <Interactive
               as={Link}
               {...s.link}
@@ -61,5 +61,5 @@ export default class Category extends React.Component {
         ))}
       </div>
     );
-  }  
+  }
 }

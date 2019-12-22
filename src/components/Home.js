@@ -41,7 +41,7 @@ export default class Home extends React.Component {
         <div style={s.pageLinkContainer}>
           <ol>
             {this.state.category.map((item, index) => (
-              <li>
+              <li key={index}>
                 <Interactive
                   as={Link}
                   {...s.link}
