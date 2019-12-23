@@ -1,7 +1,6 @@
 import React from 'react';
 import Interactive from 'react-interactive';
 import { Link } from 'react-router-dom';
-import queryString from 'query-string';
 import * as URL from '../utils/url';
 import s from '../styles/category.style';
 
@@ -16,8 +15,8 @@ export default class Category extends React.Component {
   }
 
   componentDidMount() {
-    let params = queryString.parse(location.search)
-    fetch(`${URL.docs}category/${params.cid}/index.json`)
+    let cid = location.search.match("(cid=[a-z]*)")[0].split("=")[1]
+    fetch(`${URL.docs}category/${cid}/index.json`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -37,7 +36,7 @@ export default class Category extends React.Component {
   }
 
   render(){
-    let params = queryString.parse(location.search)
+    let cid = location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()
     return (
       <div style={s.productList}>
         {this.state.product.map((item, index) => (
@@ -45,11 +44,11 @@ export default class Category extends React.Component {
             <Interactive
               as={Link}
               {...s.link}
-              to={`/product?cid=${params.cid.toLowerCase()}&pid=${item.id}`}>
+              to={`/product?cid=${cid}&pid=${item.id}`}>
               {item.name}
             </Interactive>
             <div>
-              <img style={s.productImg} src={`${URL.docs}category/${params.cid.toLowerCase()}/img/${item.id}_front.jpg`}/>
+              <img style={s.productImg} src={`${URL.docs}category/${cid}/img/${item.id}_front.jpg`}/>
             </div>
             <div>
               <p> Brand: {item.brand} </p>
