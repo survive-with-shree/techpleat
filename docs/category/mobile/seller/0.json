@@ -1,0 +1,19 @@
+{
+  "rupees": [
+    {
+      "vendor": "amazon",
+      "link": "https://amzn.to/2ZiAPNm",
+      "price": "34999.00"
+    },
+    {
+      "vendor": "flipkart",
+      "link": "https://www.flipkart.com/oneplus-7-mirror-grey-128-gb/p/itmdbcd3dd156000",
+      "price": "30999.00"
+    }
+  ],
+  "dollar": [
+
+
+  ],
+
+}
