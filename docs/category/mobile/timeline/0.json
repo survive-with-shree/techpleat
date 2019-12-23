@@ -1,0 +1,32 @@
+{
+    "timeline": [
+        {
+            "timestamp": 1557792000,
+            "type": "launch",
+            "author": "OnePlus",
+            "title": "Launch event",
+            "link": "https://www.youtube.com/watch?v=tq26eVb_-ww"
+        },
+        {
+            "timestamp":1561075200,
+            "type": "video",
+            "author": "MKBHD",
+            "title": "OnePlus 7: Way Under the Radar!",
+            "link": "https://www.youtube.com/watch?v=MOJ1_FtDGNs"
+        },
+        {
+            "timestamp":155926080,
+            "type": "video",
+            "author": "Technical Guruji",
+            "title": "Launch event",
+            "link": "https://www.youtube.com/watch?v=7WHjlPuq9r0"
+        },
+        {
+            "timestamp":1559174400,
+            "type": "video",
+            "author": "Geekyranjit",
+            "title": "OnePlus 7 Review The Better Value Flagship"
+            "link": "https://www.youtube.com/watch?v=XPBdjuY656E"
+        }
+    ]
+}
