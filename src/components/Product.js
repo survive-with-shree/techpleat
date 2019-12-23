@@ -9,7 +9,7 @@ const propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default function ExampleTwoDeepComponent({ location }) {
+export default function Product({ location }) {
   const queryPresent = location.search !== '';
   const hashPresent = location.hash !== '';
 
@@ -77,4 +77,4 @@ export default function ExampleTwoDeepComponent({ location }) {
   );
 }
 
-ExampleTwoDeepComponent.propTypes = propTypes;
+Product.propTypes = propTypes;
