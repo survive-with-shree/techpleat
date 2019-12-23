@@ -13,7 +13,7 @@ s.productCard = {
 };
 
 s.productImg = {
-  height: '700px'
+  height: '400px'
 }
 
 export default s;
