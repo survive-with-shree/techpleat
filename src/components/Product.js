@@ -1,80 +1,142 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Interactive from 'react-interactive';
 import { Link } from 'react-router-dom';
-import { Li } from '../styles/style';
-import s from '../styles/exampleTwoDeepComponent.style';
+import * as URL from '../utils/url';
+import s from '../styles/category.style';
 
-const propTypes = {
-  location: PropTypes.object.isRequired,
-};
+const fetchData = (url, object, setState) => {
+  fetch(url)
+    .then(res => res.json())
+    .then((result) => {
+        console.debug(result)
+        setState({
+          isLoaded: true,
+          [object]: result[object]
+        });
+      },
+      (error) => {
+        setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
+}
+export default class Product extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      product:[],
+      spec: [],
+      timeline: [],
+      md: ""
+    };
+  }  
 
-export default function Product({ location }) {
-  const queryPresent = location.search !== '';
-  const hashPresent = location.hash !== '';
+  componentDidMount() {
+    let cid = location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()
+    let pid = location.search.match("(pid=[0-9]*)")[0].split("=")[1]
 
-  function queryStringTitle() {
-    if (queryPresent) return 'The query string field-value pairs are:';
-    return 'No query string in the url';
+    if (cid.length != 0 && pid.length != 0) {
+      fetch(`${URL.docs}category/${cid}/index.json`)
+        .then(res => res.json())
+        .then(
+            (result) => {
+            console.debug(result)
+            this.setState({
+              isLoaded: true,
+              product: result.product
+            });
+          },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+        )
+      
+      fetch(`${URL.docs}category/${cid}/spec/${pid}.json`)
+        .then(res => res.json())
+        .then((result) => {
+            console.debug(result)
+            setState({
+              isLoaded: true,
+              spec: result.spec
+            });
+        },
+        (error) => {
+          setState({
+            isLoaded: true,
+            error
+          });
+        })
+
+      fetch(`${URL.docs}category/${cid}/timeline/${pid}.json`)
+        .then(res => res.json())
+        .then((result) => {
+            console.debug(result)
+            setState({
+              isLoaded: true,
+              timeline: result.timeline
+            });
+        },
+        (error) => {
+          setState({
+            isLoaded: true,
+            error
+          });
+        })
+
+      fetch(`${URL.docs}category/${cid}/md/${pid}.md`)
+        .then(res => res.json())
+        .then((result) => {
+            console.debug(result)
+            setState({
+              isLoaded: true,
+              md: result.md
+            });
+        },
+        (error) => {
+          setState({
+            isLoaded: true,
+            error
+          });
+        })
+    }
   }
 
-  function hashFragmentTitle() {
-    if (hashPresent) return 'The hash fragment is:';
-    return 'No hash fragment in the url';
-  }
-
-  function linkToShowQueryAndOrHash() {
-    if (queryPresent && hashPresent) return null;
-
-    const queryString = (queryPresent ? location.search : '?field1=foo&field2=bar');
-    const hashFragment = (hashPresent ? location.hash : '#boom!');
-
-    let linkText = '';
-    if (queryPresent && !hashPresent) linkText = 'Show with hash fragment';
-    if (!queryPresent && hashPresent) linkText = 'Show with query string';
-    if (!queryPresent && !hashPresent) linkText = 'Show with query string and hash fragment';
-
+  render(){
+    let cid = location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()
+    let pid = location.search.match("(pid=[0-9]*)")[0].split("=")[1]
     return (
-      <div style={s.lineContainer}>
-        <Interactive
-          as={Link}
-          to={`/example/two-deep${queryString}${hashFragment}`}
-          {...s.link}
-        >{linkText}</Interactive>
+      <div style={s.productList}>
+        <p>{cid} {pid} {JSON.stringify(this.state.product)}</p>
+        <p>{JSON.stringify(this.state.spec)}</p>
+        <p>{JSON.stringify(this.state.timeline)}</p>
+        <p>{JSON.stringify(this.state.md)}</p> 
+        {this.state.product.map((item, index) => (
+          <div style={s.productCard} key={index}>
+            <Interactive
+              as={Link}
+              {...s.link}
+              to={`/product?cid=${cid}&pid=${item.id}`}>
+              {item.name}
+            </Interactive>
+            <div>
+              <img style={s.productImg} src={`${URL.docs}category/${cid}/img/${item.id}_front.jpg`}/>
+            </div>
+            <div>
+              <p> Brand: {item.brand} </p>
+              <p> Price: {item.price.split(",").join(", ")} </p>
+              <p> Launch date: {item.launchDate} </p>
+              <p> Rating: {item.rating} </p>
+            </div>
+          </div>
+        ))}
       </div>
     );
   }
-
-  function parseQueryString() {
-    if (!queryPresent) return [];
-    return location.search
-      .replace('?', '')
-      .split('&')
-      .map(fvPair => fvPair.split('='))
-      .map(pair => [pair[0], pair.slice(1).join('=')]);
-  }
-
-  return (
-    <div>
-      <div style={s.lineContainer}>
-        <div>{queryStringTitle()}</div>
-        <ul>
-          {
-            parseQueryString().map((pair, index) => (
-              <Li key={`${pair[0]}${pair[1]}${index}`}>{`${pair[0]}: ${pair[1]}`}</Li>
-            ))
-          }
-        </ul>
-      </div>
-      <div style={s.lineContainer}>
-        <div>{hashFragmentTitle()}</div>
-        <ul>
-          {hashPresent && <Li>{location.hash.slice(1)}</Li>}
-        </ul>
-      </div>
-      {linkToShowQueryAndOrHash()}
-    </div>
-  );
 }
-
-Product.propTypes = propTypes;
