@@ -1,0 +1,50 @@
+{
+  "spec": [
+    {
+      "name": "RAM",
+      "value": "8gb"
+    },
+    {
+      "name": "Chipset",
+      "value": "Apple A13 Bionic (7 nm+)"
+    },
+    {
+      "name": "Battery",
+      "value": "3110 mAh battery"
+    },
+    {
+      "name": "Dimensions",
+      "value": "150.9 x 75.7 x 8.3 mm (5.94 x 2.98 x 0.33 in)"
+    },
+    {
+      "name": "Weight",
+      "value": "194 g (6.84 oz)"
+    },
+    {
+      "name": "Rear Camera",
+      "value": "12 MP, f/1.8, 26mm (wide), 1/2.55", 1.4µm, dual pixel PDAF, OIS
+12 MP, f/2.4, 13mm (ultrawide)"
+    },
+    {
+      "name": "Front Camera",
+      "value": "12 MP, f/2.2, 23mm (wide)
+SL 3D camera"
+    },
+    {
+      "name": "Display",
+      "value": "6.1 inches"
+    },
+    {
+      "name": "Display Type",
+      "value": "Liquid Retina IPS LCD capacitive touchscreen, 16M colors"
+    },
+    {
+      "name": "Screen Resolution",
+      "value": "828 x 1792 pixels, 19.5:9 ratio (~326 ppi density)"
+    },
+    {
+      "name": "Graphics",
+      "value": "Apple GPU (4-core graphics)"
+    }
+  ]
+}
