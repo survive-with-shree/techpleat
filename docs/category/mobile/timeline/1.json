@@ -1,0 +1,32 @@
+{
+    "timeline": [
+        {
+            "timestamp": 1568073600,
+            "type": "launch",
+            "author": "Apple",
+            "title": "Introducing iPhone 11 — Apple",
+            "link": "https://www.youtube.com/watch?v=H4p6njjPV_o"
+        },
+        {
+            "timestamp":1569801600,
+            "type": "video",
+            "author": "MKBHD",
+            "title": "iPhone 11 Review: Too Easy!",
+            "link": "https://www.youtube.com/watch?v=OoY7zp8GkLI"
+        },
+        {
+            "timestamp":1568764800,
+            "type": "video",
+            "author": "Technical Guruji",
+            "title": "iPhone 11 Unboxing & First Look - A Solid Champ?🔥🔥🔥",
+            "link": "https://www.youtube.com/watch?v=hXeI5zVN_gM"
+        },
+        {
+            "timestamp":1569024000,
+            "type": "video",
+            "author": "Unbox Therapy",
+            "title": "Unboxing Every iPhone 11, iPhone 11 Pro, iPhone 11 Pro Max"
+            "link": "https://www.youtube.com/watch?v=_a4HmYFGY1s"
+        }
+    ]
+}
