@@ -9,6 +9,18 @@
       "value": "Qualcomm Snapdragon 855"
     },
     {
+      "name": "Battery",
+      "value": "4000 mAh"
+    },
+    {
+      "name": "Dimensions",
+      "value": "157.7 x 74.8 x 8.2 mm (6.21 x 2.94 x 0.32 in)"
+    },
+    {
+      "name": "Weight",
+      "value": "182 g (6.42 oz)"
+    },
+    {
       "name": "Rear Camera",
       "value": "48 MP + 16 MP + 8 MP"
     },
@@ -22,11 +34,11 @@
     },
     {
       "name": "Display Type",
-      "value": "Fluid AMOLED"
+      "value": "Optic AMOLED capacitive touchscreen, 16M colors"
     },
     {
       "name": "Screen Resolution",
-      "value": "1440 x 3120 pixels"
+      "value": "1080 x 2340 pixels, 19.5:9 ratio (~402 ppi density)"
     },
     {
       "name": "Graphics",
