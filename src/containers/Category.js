@@ -1,6 +1,9 @@
 import React from 'react';
 import Interactive from 'react-interactive';
 import { Link } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+
+import ProductCard from '../components/ProductCard';
 import * as URL from '../utils/url';
 import s from '../styles/category.style';
 
@@ -38,27 +41,16 @@ export default class Category extends React.Component {
   render(){
     let cid = location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()
     return (
-      <div style={s.productList}>
+      <Grid container item>
         {this.state.product.map((item, index) => (
-          <div style={s.productCard} key={index}>
-            <Interactive
-              as={Link}
-              {...s.link}
-              to={`/product?cid=${cid}&pid=${item.id}`}>
-              {item.name}
-            </Interactive>
-            <div>
-              <img style={s.productImg} src={`${URL.docs}category/${cid}/img/${item.id}_front.jpg`}/>
-            </div>
-            <div>
-              <p> Brand: {item.brand} </p>
-              <p> Price: {item.price.split(",").join(", ")} </p>
-              <p> Launch date: {item.launchDate} </p>
-              <p> Rating: {item.rating} </p>
-            </div>
-          </div>
+          <Grid container item lg={3} key={index}>
+            <ProductCard 
+              productItem={item}
+              categoryId={cid}
+            />
+          </Grid>
         ))}
-      </div>
+      </Grid>
     );
   }
 }
