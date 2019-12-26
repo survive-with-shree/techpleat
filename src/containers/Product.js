@@ -8,7 +8,7 @@ import SpecTable from '../components/SpecTable';
 import ProductCard from '../components/ProductCard';
 import Timeline from '../components/Timeline';
 import * as URL from '../utils/url';
-import s from '../styles/category.style';
+import s from '../styles/product.style';
 import { textAlign } from '@material-ui/system';
 
 export default class Product extends React.Component {
@@ -93,9 +93,9 @@ export default class Product extends React.Component {
             </Grid>
           </Grid>
           
-          <Grid container item lg={3}>
-            <Grid item lg={12}>          
-              <h4 style={{textAlign: "center"}}> Timeline</h4>
+          <Grid container item lg={3} style={s.timeline}>
+            <Grid item lg={12}>
+              <h4> Timeline</h4>
               {this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
             </Grid>
           </Grid>

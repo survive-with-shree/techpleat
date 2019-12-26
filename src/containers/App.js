@@ -19,24 +19,24 @@ export default function App() {
     > {text} </Interactive>
   );
   return (
-    <Grid container style={{paddingHorizontal: 10,  paddingVertical: 20}}>
+    <Grid container style={s.rootContainer}>
       <Grid container item lg={12}>
-        <Grid container item lg={12}>
+        <Grid container item lg={12} style={s.titleBar}>
           <Grid container item lg={12} spacing={1}>
-            <Grid item lg={3} style={{textAlign: "center", fontSize: "50px", textAlign: "right"}}>
+            <Grid item lg={3} style={s.title}>
               <h1> TechPleat </h1>
             </Grid>
-            <Grid container item lg={6}>
-              <h3> Open source platform of reviews by crowd sourced reviewers </h3>
+            <Grid container item lg={6} style={s.slogan}>
+              <h3> Open source platform for reviews by crowd sourced reviewers </h3>
             </Grid>
-            <Grid container item lg={3}>
+            <Grid container item lg={3} style={s.social}>
               <h4> {repoReadmeLink('Contribute on GitHub')} </h4>
             </Grid>
             <Divider />
           </Grid>
         </Grid>
         
-        <Grid container item lg={12}>
+        <Grid container item lg={12} style={s.body}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/category" component={Category} />
