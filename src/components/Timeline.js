@@ -9,9 +9,8 @@ import * as URL from '../utils/url';
 const useStyles = makeStyles(theme => ({
   card: {
     height: 90,
-    width: 320,
-    marginLeft: 5,
-    marginBottom: 5
+    width: "100%",
+    textAlign: "center"
   },
   avatar: {
     backgroundColor: red[500],
@@ -35,7 +34,7 @@ export default function Timeline(props) {
           avatar={
             <Avatar 
               alt={props.event.author}
-              src={`${URL.docs}logo/${props.event.author.toLowerCase()}.jpg`} 
+              src={`${URL.docs}logo/${props.event.author.toLowerCase().replace(' ', '_')}.jpg`} 
               aria-label="recipe" 
               className={classes.avatar}
             />

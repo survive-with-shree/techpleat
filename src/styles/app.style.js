@@ -2,28 +2,11 @@ import style from './style';
 
 const s = Object.create(style);
 
-s.root = {
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+s.rootContainer = {
+  fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
   fontWeight: '300',
   fontSize: '16px',
   letterSpacing: '0.025em',
-  padding: '3vh 0 12vh 0',
-  width: '1200px',
-  // use responsive max-width to simulate padding/margin to allow
-  // space for vertical scroll bar without creating horizontal scroll bar
-  // (if there is padding, the window will scroll horizontally to show the padding)
-  maxWidth: 'calc(100vw - 40px)',
-
-  // center based on vw to prevent content jump when vertical scroll bar show/hide
-  // note: vw/vh include the width of scroll bars. Note that centering using margin auto
-  // or % (which doesn't include scroll bars, so changes when scroll bars shown) causes a page jump
-  position: 'relative',
-  left: '50vw',
-  WebkitTransform: 'translate(-50%, 0)',
-  MozTransform: 'translate(-50%, 0)',
-  msTransform: 'translate(-50%, 0)',
-  OTransform: 'translate(-50%, 0)',
-  transform: 'translate(-50%, 0)',
 
   WebkitTextSizeAdjust: 'none',
   MozTextSizeAdjust: 'none',
@@ -31,23 +14,52 @@ s.root = {
   textSizeAdjust: 'none',
 };
 
+s.body = {
+  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+  fontWeight: '300',
+  fontSize: '16px',
+  letterSpacing: '0.025em',
+  padding: '7vh 8px',
+  left: '50vw',
+
+  WebkitTextSizeAdjust: 'none',
+  MozTextSizeAdjust: 'none',
+  msTextSizeAdjust: 'none',
+  textSizeAdjust: 'none',
+};
+
+
+s.titleBar = {
+  background: 'linear-gradient(60deg, rgb(287, 35, 337), rgb(229, 57, 53))',
+  color: 'white',
+  padding: '3vh 8px',
+  marginBottom: '0.5vh'
+};
+
 s.title = {
-  fontSize: '20px',
-  marginBottom: '0.5vh',
+  textAlign: "center", 
+  fontSize: "50px", 
+  textAlign: "right"
+};
+
+s.slogan = {
+  paddingLeft: "1.5vw"
+};
+
+s.social = {
+  textAlign: "center"
 };
 
 s.repoLink = {
   fontSize: '14px',
 };
 
-s.breadcrumbs = {
-  margin: '3vh 0',
-};
-
 s.creditLine = {
+  width: "100%",
   color: '#A0A0A0',
   fontSize: '14px',
   marginTop: '50px',
+  textAlign: "center"
 };
 
 export default s;

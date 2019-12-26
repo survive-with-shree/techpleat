@@ -14,7 +14,7 @@ import * as URL from '../utils/url';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
+    width: "100%"
   },
   media: {
     height: 250,
@@ -45,13 +45,13 @@ export default function ProductCard(props) {
     return (
       <Card className={classes.card} variant="outlined">
         <br/>
-        <a href={`/product?cid=${cid}&pid=${item.id}`}>       
+        <a href={`/product?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>       
           {!props.seller &&  <CardHeader title={item.name}/>}
         
           <CardMedia
-          className={classes.media}
-          image={`${URL.docs}category/${cid}/img/${item.id}_front.jpg`}
-          title={item.name}
+            className={classes.media}
+            image={`${URL.docs}category/${cid}/img/${item.id}_front.jpg`}
+            title={item.name}
           />
           <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
