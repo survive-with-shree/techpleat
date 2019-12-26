@@ -1,6 +1,8 @@
 import React from 'react';
 import Interactive from 'react-interactive';
 import { Link } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+
 import { Code } from '../styles/style';
 import * as URL from '../utils/url';
 import s from '../styles/home.style';
@@ -37,21 +39,19 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <div style={s.pageLinkContainer}>
-          <ol>
-            {this.state.category.map((item, index) => (
-              <li key={index}>
-                <Interactive
-                  as={Link}
-                  {...s.link}
-                  to={`/category?cid=${item.toLowerCase()}`}>
-                  {item}
-                </Interactive>
-              </li>
-            ))}
-          </ol>
-        </div>
+      <div style={s.pageLinkContainer}>
+        <ol>
+          {this.state.category.map((item, index) => (
+            <li key={index}>
+              <Interactive
+                as={Link}
+                {...s.link}
+                to={`/category?cid=${item.toLowerCase()}`}>
+                {item}
+              </Interactive>
+            </li>
+          ))}
+        </ol>
       </div>
     );
   }
