@@ -88,19 +88,7 @@ export default class Product extends React.Component {
                             seller={this.state.seller}/>
                     </Grid>
 
-                    <Grid container item md={6} style={s.column}>
-                        <Grid item md={12} style={{width: "100%"}}>
-                            <SpecTable spec={this.state.spec} />
-                        </Grid>
-                        <Grid item md={12} style={s.row}>
-                            <Card style={s.md}>
-                                <Typography variant="h4">
-                                    Product review
-                                </Typography>
-                                <Markdown source={this.state.md} />
-                            </Card>
-                        </Grid>
-                    </Grid>
+                    
                 
                     <Grid container item md={3} style={s.column}>
                         <Grid item md={12}>
