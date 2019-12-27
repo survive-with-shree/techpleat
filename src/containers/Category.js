@@ -43,7 +43,7 @@ export default class Category extends React.Component {
     return (
       <Grid container item>
         {this.state.product.map((item, index) => (
-          <Grid container item lg={3} key={index}>
+          <Grid container item md={3} key={index}>
             <ProductCard 
               productItem={item}
               categoryId={cid}

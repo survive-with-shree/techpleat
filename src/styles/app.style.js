@@ -19,7 +19,7 @@ s.body = {
   fontWeight: '300',
   fontSize: '16px',
   letterSpacing: '0.025em',
-  padding: '7vh 8px',
+  padding: '7vh 0vw',
   left: '50vw',
 
   WebkitTextSizeAdjust: 'none',
@@ -37,17 +37,25 @@ s.titleBar = {
 };
 
 s.title = {
+  fontWeight: "800",
   textAlign: "center", 
   fontSize: "50px", 
   textAlign: "right"
 };
 
 s.slogan = {
+  fontWeight: "400",
   paddingLeft: "1.5vw"
 };
 
 s.social = {
   textAlign: "center"
+};
+
+s.footer = {
+  justifyContent: "center",
+  textAlign: "center",
+  marginBottom: "4vh"
 };
 
 s.repoLink = {
