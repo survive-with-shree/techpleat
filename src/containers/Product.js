@@ -66,53 +66,50 @@ export default class Product extends React.Component {
     }
 
     return (
-        <Grid container item md={12}>
-            <Grid container item 
-                md={12} 
-                style={{ 
-                    marginBottom: "1vh",
-                    justifyContent: "center", 
-                    fontSize: "8vh", 
-                    fontWeight: "100", 
-                    borderTop: "2px solid #dfdfdf", 
-                    top: "50%",
-                    borderBottom: "2px solid #dfdfdf", top: "50%"}} >
-                {item && <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text",
-    webkitTextFillColor: "transparent"}}>{item.name}</h1>}
-            </Grid>
-            <Grid container item md={3} style={s.column}>                
-                {item &&
-                    <ProductCard 
-                    productItem={item}
-                    categoryId={location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()}
-                    seller={this.state.seller}
-                />}
-            </Grid>
+        <div>
+            {item &&
+                <Grid container item md={12}>
+                    <Grid container item 
+                        md={12}
+                        style={{
+                            marginBottom: "1vh",
+                            justifyContent: "center", 
+                            fontSize: "8vh", 
+                            fontWeight: "100", 
+                            borderTop: "2px solid #dfdfdf", 
+                            top: "50%",
+                            borderBottom: "2px solid #dfdfdf", top: "50%"}} >
+                        <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.name}</h1>
+                    </Grid>
+                    <Grid container item md={3} style={s.column}>                
+                      <ProductCard 
+                            productItem={item}
+                            categoryId={location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()}
+                            seller={this.state.seller}/>
+                    </Grid>
 
-            <Grid container item md={6} style={s.column}>
-                <Grid item md={12} style={{width: "100%"}}>
-                    {this.state.spec.length != 0 && <SpecTable spec={this.state.spec} />}
+                    <Grid container item md={6} style={s.column}>
+                        <Grid item md={12} style={{width: "100%"}}>
+                            <SpecTable spec={this.state.spec} />
+                        </Grid>
+                        <Grid item md={12} style={s.row}>
+                            <Card style={s.md}>
+                                <Typography variant="h4">
+                                    Product review
+                                </Typography>
+                                <Markdown source={this.state.md} />
+                            </Card>
+                        </Grid>
+                    </Grid>
+                
+                    <Grid container item md={3} style={s.column}>
+                        <Grid item md={12}>
+                            {this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
+                        </Grid>
+                    </Grid> 
                 </Grid>
-                <Grid item md={12} style={s.row}>
-                    <Card style={s.md}>
-                        <Typography variant="h4">
-                            Product review
-                        </Typography>
-                        <Typography variant="body2" component="p">
-                            {this.state.md.length != 0 && <Markdown source={this.state.md} />}
-                        </Typography>
-                    </Card>
-                </Grid>
-            </Grid>
-            
-            <Grid container item md={3} style={s.column}>
-                <Grid item md={12}>
-                    {this.state.timeline.length != 0 && 
-                        this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
-           
-                </Grid>
-           </Grid> 
-        </Grid>
+            }
+        </div>
     );
   }
 }
