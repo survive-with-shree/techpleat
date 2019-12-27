@@ -14,7 +14,9 @@ import * as URL from '../utils/url';
 
 const useStyles = makeStyles({
   card: {
-    width: "100%"
+    width: "100%",
+    justifyContent: "center",
+    textAlign: "center"
   },
   media: {
     height: 250,
@@ -23,18 +25,23 @@ const useStyles = makeStyles({
 });
 
 const sellerView = (seller) => {
-  return ( 
-    Object.keys(seller).map((currency, index) => {
-      return (
+    let currencyList = Object.keys(seller) 
+    return (
         <div>
-          <br/>
-          {seller[currency].map((seller, index) => {
-            return(<p> <Button variant="outlined" size="small" color="primary" href={seller.link}> {seller.vendor.toUpperCase()}: {seller.price} {currency} </Button> </p>)
-          })}
+            <br/>
+            {currencyList.map( (currency) => (
+                <div>
+                    {seller[currency].map((vendor) => (
+                        <div>
+                            <Button variant="outlined" size="small" color="primary" href={vendor.link}> 
+                                {vendor.vendor.toUpperCase()}: {vendor.price} {currency} 
+                            </Button>
+                        </div>))
+                    }
+                </div>
+            ))}
         </div>
-      )
-    })
-  )
+    )
 }
 
 export default function ProductCard(props) {
@@ -43,41 +50,43 @@ export default function ProductCard(props) {
     const cid = props.categoryId;
 
     return (
-      <Card className={classes.card} variant="outlined">
-        <br/>
-        <a href={`/product?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>       
-          {!props.seller &&  <CardHeader title={item.name}/>}
+        <div>
+        <Card className={classes.card} variant="outlined">
+            <br/>
+            <a href={`/product?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>
+                {!props.seller &&  <CardHeader title={item.name}/>}
+            </a>
+            <a href={`/product?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>
+                <CardMedia
+                    className={classes.media}
+                    image={`${URL.docs}category/${cid}/img/${item.id}_front.jpg`}
+                    title={item.name}
+                />
+            </a>
+            <CardContent>
+                Brand: {item.brand} <br/>
+                Price: {item.price.split(",").join(", ")} <br/>
+                Launch date: {item.launchDate} <br/>
+                Rating: {item.rating}
+                <br/>
+                
+                {props.seller &&
+                sellerView(props.seller) 
+                }
+            </CardContent>
         
-          <CardMedia
-            className={classes.media}
-            image={`${URL.docs}category/${cid}/img/${item.id}_front.jpg`}
-            title={item.name}
-          />
-          <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-              Brand: {item.brand} <br/>
-              Price: {item.price.split(",").join(", ")} <br/>
-              Launch date: {item.launchDate} <br/>
-              Rating: {item.rating}
-              <br/>
-              
-              {props.seller &&
-              sellerView(props.seller) 
-              }
-          </Typography>
-          </CardContent>
-        </a>
-        <CardActions >
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          {!props.seller &&
-            <Button href={`/product?cid=${cid}&pid=${item.id}`} size="small" color="primary">
-                Learn More
+            <CardActions >
+            <Button size="small" color="primary">
+                Share
             </Button>
-          }
-        </CardActions>
-      </Card>
+            {!props.seller &&
+                <Button href={`/product?cid=${cid}&pid=${item.id}`} size="small" color="primary">
+                    Learn More
+                </Button>
+            }
+            </CardActions>
+        </Card>
+            </div>
     );
   
 }
