@@ -1,15 +1,17 @@
 import React from 'react';
 import Interactive from 'react-interactive';
 import { Link } from 'react-router-dom';
+import Markdown from 'react-markdown';
+import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
-import Markdown from 'react-markdown'
+import { textAlign } from '@material-ui/system';
+import Typography from '@material-ui/core/Typography';
 
 import SpecTable from '../components/SpecTable';
 import ProductCard from '../components/ProductCard';
 import Timeline from '../components/Timeline';
 import * as URL from '../utils/url';
 import s from '../styles/product.style';
-import { textAlign } from '@material-ui/system';
 
 export default class Product extends React.Component {
   constructor(props) {
@@ -17,8 +19,6 @@ export default class Product extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      categoryId: location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase(),
-      productId: location.search.match("(pid=[0-9]*)")[0].split("=")[1],
       product: [],
       spec: [],
       timeline: [],
@@ -27,8 +27,8 @@ export default class Product extends React.Component {
     };
   }  
   componentDidMount() {
-    let cid = this.state.categoryId
-    let pid = this.state.productId
+    let cid = location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()
+    let pid = location.search.match("(pid=[0-9]*)")[0].split("=")[1]
     if (cid.length != 0 && pid.length != 0) {
       Promise.all([
         fetch(`${URL.docs}category/${cid}/index.json`),
@@ -55,52 +55,64 @@ export default class Product extends React.Component {
       )
     }
   }
+
   
   render() {
     let item
     if (this.state.product.length != 0) {
       this.state.product.map((element, index) => {
-        if (element.id.toString() == this.state.productId.toString()) item = element
+        if (element.id.toString() == location.search.match("(pid=[0-9]*)")[0].split("=")[1].toString()) item = element
       })
     }
 
     return (
-      <Grid container item lg={12}>
-        <Grid container item lg={12}>
-          <Grid item lg={3}>
-            {item && <h2 style={{ textAlign: "center"}}>{item.name}</h2>}
-          </Grid>
-        </Grid>  
-        <Grid container item lg={12}>
-          
-          <Grid item lg={3}>
-            <Grid item lg={12}>
-              {item &&
-                <ProductCard 
-                  productItem={item}
-                  categoryId={this.state.categoryId}
-                  seller={this.state.seller}
-              />}
+        <Grid container item md={12}>
+            <Grid container item 
+                md={12} 
+                style={{ 
+                    marginBottom: "1vh",
+                    justifyContent: "center", 
+                    fontSize: "8vh", 
+                    fontWeight: "100", 
+                    borderTop: "2px solid #dfdfdf", 
+                    top: "50%",
+                    borderBottom: "2px solid #dfdfdf", top: "50%"}} >
+                {item && <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text",
+    webkitTextFillColor: "transparent"}}>{item.name}</h1>}
             </Grid>
-          </Grid>
+            <Grid container item md={3} style={s.column}>                
+                {item &&
+                    <ProductCard 
+                    productItem={item}
+                    categoryId={location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()}
+                    seller={this.state.seller}
+                />}
+            </Grid>
 
-          <Grid container item lg={6}>
-            <Grid item lg={12}>
-              <SpecTable spec={this.state.spec} />
+            <Grid container item md={6} style={s.column}>
+                <Grid item md={12} style={{width: "100%"}}>
+                    {this.state.spec.length != 0 && <SpecTable spec={this.state.spec} />}
+                </Grid>
+                <Grid item md={12} style={s.row}>
+                    <Card style={s.md}>
+                        <Typography variant="h4">
+                            Product review
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                            {this.state.md.length != 0 && <Markdown source={this.state.md} />}
+                        </Typography>
+                    </Card>
+                </Grid>
             </Grid>
-            <Grid item lg={12}>
-              <Markdown source={this.state.md} />
-            </Grid>
-          </Grid>
-          
-          <Grid container item lg={3} style={s.timeline}>
-            <Grid item lg={12}>
-              <h4> Timeline</h4>
-              {this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
-            </Grid>
-          </Grid>
+            
+            <Grid container item md={3} style={s.column}>
+                <Grid item md={12}>
+                    {this.state.timeline.length != 0 && 
+                        this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
+           
+                </Grid>
+           </Grid> 
         </Grid>
-      </Grid>
     );
   }
 }

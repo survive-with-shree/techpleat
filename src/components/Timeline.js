@@ -10,7 +10,8 @@ const useStyles = makeStyles(theme => ({
   card: {
     height: 90,
     width: "100%",
-    textAlign: "center"
+    textAlign: "center",
+    marginBottom: "6px"
   },
   avatar: {
     backgroundColor: red[500],
