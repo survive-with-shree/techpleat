@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 
 import Home from './Home';
 import Category from './Category';
-import Product from './Product';
 import PageNotFound from './PageNotFound';
 import s from '../styles/app.style';
 
@@ -27,7 +26,6 @@ export default function App() {
         <Grid container item md={12} style={s.body}>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/product" component={Product} />
             <Route path="/category" component={Category} />
             <Route component={PageNotFound} />
           </Switch>

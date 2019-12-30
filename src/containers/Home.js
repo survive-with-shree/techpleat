@@ -46,7 +46,7 @@ export default class Home extends React.Component {
               <Interactive
                 as={Link}
                 {...s.link}
-                to={`/category?cid=${item.toLowerCase()}`}>
+                to={`/category?cid=${item.toLowerCase()}&pid=_`}>
                 {item}
               </Interactive>
             </li>
