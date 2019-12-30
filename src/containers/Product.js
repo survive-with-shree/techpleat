@@ -38,7 +38,7 @@ export default class Category extends React.Component {
       )
   }
 
-  render(){
+  render() {
     let cid = location.search.match("(cid=[a-z]*)")[0].split("=")[1].toLowerCase()
     return (
       <Grid container item>

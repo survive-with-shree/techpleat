@@ -27,8 +27,8 @@ export default function App() {
         <Grid container item md={12} style={s.body}>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/category" component={Category} />
             <Route path="/product" component={Product} />
+            <Route path="/category" component={Category} />
             <Route component={PageNotFound} />
           </Switch>
         </Grid>
