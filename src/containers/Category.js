@@ -61,14 +61,7 @@ export default class Category extends React.Component {
           timeline: data3.timeline,
           seller: data4,
           md: data5
-        })},
-        ([error1, error2, error3, error4, error5]) => {
-          this.setState({
-            isLoaded: false,
-            error: error5
-          });
-        }
-      )
+        })})
     }
   }
 
@@ -85,12 +78,12 @@ export default class Category extends React.Component {
       return (
         <Grid container item>
           {this.state.product.map((item, index) => (
-              <Grid container item md={3} key={index}>
-                <ProductCard 
-                  productItem={item}
-                  categoryId={cid}
-                />
-              </Grid>
+            <Grid container item md={3} key={index}>
+              <ProductCard 
+                productItem={item}
+                categoryId={cid}
+              />
+            </Grid>
           ))}
         </Grid>
       )
@@ -100,15 +93,16 @@ export default class Category extends React.Component {
           <Grid container item 
             md={12}
             style={{
-                marginBottom: "1vh",
-                justifyContent: "center", 
-                fontSize: "8vh", 
-                fontWeight: "100", 
-                borderTop: "2px solid #dfdfdf", 
-                top: "50%",
-                borderBottom: "2px solid #dfdfdf", top: "50%"}} >
+            marginBottom: "1vh",
+            justifyContent: "center", 
+            fontSize: "8vh", 
+            fontWeight: "100", 
+            borderTop: "2px solid #dfdfdf", 
+            top: "50%",
+            borderBottom: "2px solid #dfdfdf", top: "50%"}} >
             <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.name}</h1>
           </Grid>
+
           <Grid container item md={3} style={s.column}>                
             <ProductCard 
             productItem={item}
@@ -129,7 +123,7 @@ export default class Category extends React.Component {
               </Card>
             </Grid>
           </Grid>
-      
+
           <Grid container item md={3} style={s.column}>
             <Grid item md={12}>
               {this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
