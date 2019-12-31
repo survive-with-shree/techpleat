@@ -86,7 +86,7 @@ export default function ProductCard(props) {
             }
             </CardActions>
         </Card>
-            </div>
+        </div>
     );
   
 }

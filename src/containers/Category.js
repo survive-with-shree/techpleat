@@ -35,7 +35,7 @@ export default class Category extends React.Component {
           console.debug(result)
           this.setState({
             isLoaded: true,
-            product: result.product
+            product: result.product.reverse()
           });
         },
         (error) => {
@@ -56,6 +56,7 @@ export default class Category extends React.Component {
       .then(([res1, res2, res3, res4, res5]) => Promise.all([res1.json(), res2.json(), res3.json(), res4.json(), res5.text()]))
       .then(([data1, data2, data3, data4, data5]) => {
         this.setState({
+          isLoaded: true,
           product: data1.product,
           spec: data2.spec,
           timeline: data3.timeline,
