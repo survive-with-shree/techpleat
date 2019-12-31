@@ -53,10 +53,10 @@ export default function ProductCard(props) {
         <div>
         <Card className={classes.card} variant="outlined">
             <br/>
-            <a href={`/category?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>
+            <a href={`/?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>
                 {!props.seller &&  <CardHeader title={item.name}/>}
             </a>
-            <a href={`/category?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>
+            <a href={`/?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>
                 <CardMedia
                     className={classes.media}
                     image={`${URL.docs}category/${cid}/img/${item.id}_front.jpg`}
@@ -80,7 +80,7 @@ export default function ProductCard(props) {
                 Share
             </Button>
             {!props.seller &&
-                <Button href={`/category?cid=${cid}&pid=${item.id}`} size="small" color="primary">
+                <Button href={`/?cid=${cid}&pid=${item.id}`} size="small" color="primary">
                     Learn More
                 </Button>
             }

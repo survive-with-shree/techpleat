@@ -1,6 +1,5 @@
 import React from 'react';
 import Interactive from 'react-interactive';
-import { Switch, Route } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 
 import Home from './Home';
@@ -9,6 +8,12 @@ import PageNotFound from './PageNotFound';
 import s from '../styles/app.style';
 
 export default function App() {
+  let  cid = location.search.match("(cid=[a-z]*)")
+  if (cid != null) cid = cid[0].split("=")[1]
+  
+  let pid = location.search.match("(pid=[0-9_]*)")
+  if (pid != null) pid = pid[0].split("=")[1]
+  
   return (
     <Grid container style={s.rootContainer}>
       <Grid container item md={12}>
@@ -22,18 +27,15 @@ export default function App() {
             </Grid>
           </Grid>
         </Grid>
-        
         <Grid container item md={12} style={s.body}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/category" component={Category} />
-            <Route component={PageNotFound} />
-          </Switch>
+          {(cid == null && pid == null) && <Home/>}
+          {(cid != null && pid == "_") && <Category/>}
+          {(cid != null && pid != null) && <Category />}
         </Grid>
 
         <Grid container item md={12} style={s.footer}>
             <Grid item md={6} style={{textAlign: "center"}}>
-                <Interactive
+              <Interactive
                 as="a"
                 href="https://github.com/survive-with-shree/techpleat#readme"
                 interactiveChild
@@ -41,11 +43,11 @@ export default function App() {
                 touchActive={{}}
                 touchActiveTapOnly
                 >
-                    <span {...s.childLink}>Contribute on GitHub</span>
-                </Interactive>
+                  <span {...s.childLink}>Contribute on GitHub</span>
+              </Interactive>
             </Grid>
             <Grid item md={6}>
-                <Interactive
+              <Interactive
                 as="a"
                 href="/"
                 interactiveChild
@@ -53,8 +55,8 @@ export default function App() {
                 touchActive={{}}
                 touchActiveTapOnly
                 >
-                    Code and concept by <span {...s.childLink}>Devendra Parhate and Shreejit Verma</span>
-                </Interactive>
+                  Code and concept by <span {...s.childLink}>Devendra Parhate and Shreejit Verma</span>
+              </Interactive>
             </Grid>
         </Grid>
       </Grid>
