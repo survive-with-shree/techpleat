@@ -97,9 +97,8 @@ export default class Category extends React.Component {
             justifyContent: "center", 
             fontSize: "8vh", 
             fontWeight: "100", 
-            borderTop: "2px solid #dfdfdf", 
             top: "50%",
-            borderBottom: "2px solid #dfdfdf", top: "50%"}} >
+            backgroundColor: "#ffffff73"}} >
             <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.name}</h1>
           </Grid>
 
