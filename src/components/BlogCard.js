@@ -52,7 +52,7 @@ export default function BlogCard(props) {
             </div>
             <CardMedia
                 className={classes.cover}
-                image={`${URL.docs}category/${cid}/blog/img/${item.id}_front.jpg`}
+                image={`${URL.docs}category/${cid}/blog/img/${item.id}_0.jpg`}
                 title={item.title}
             />
         </Card>
