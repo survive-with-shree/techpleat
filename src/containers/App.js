@@ -54,7 +54,7 @@ export default function App() {
                   <span {...s.childLink}>Contribute on GitHub</span>
               </Interactive>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={4} style={{textAlign: "center"}}>
               <Interactive
                 as="a"
                 href="/"

@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => ({
     margin: "1vh"
   },
   details: {
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -46,7 +47,7 @@ export default function BlogCard(props) {
                         </a>
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        {item.author} {calendarDate}
+                        {calendarDate} | {item.author} 
                     </Typography>
                 </CardContent>
             </div>
