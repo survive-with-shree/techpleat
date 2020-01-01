@@ -45,7 +45,8 @@ s.title = {
 
 s.slogan = {
   fontWeight: "400",
-  paddingLeft: "1.5vw"
+  paddingLeft: "1.5vw",
+  textAlign: "center"
 };
 
 s.social = {

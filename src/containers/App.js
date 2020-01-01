@@ -33,7 +33,7 @@ export default function App() {
               <h1> <a href="/">TechPleat </a></h1>
             </Grid>
             <Grid container item md={6} style={s.slogan}>
-              <h3> Open source platform for reviews by crowd sourced reviewers </h3>
+              <h3> Open source platform for customers by crowd sourced reviewers </h3>
             </Grid>
           </Grid>
         </Grid>
