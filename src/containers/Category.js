@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { textAlign } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
+import { FacebookProvider, Like, Comments } from 'react-facebook';
 
 import * as URL from '../utils/url';
 import s from '../styles/category.style';
@@ -122,6 +123,14 @@ export default class Category extends React.Component {
                 <Markdown source={this.state.md} />
               </Card>
             </Grid>
+            <Grid item md={12} style={s.row}>
+                <FacebookProvider appId="620534005365040">
+                    <Like href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} colorScheme="dark" showFaces share />
+                </FacebookProvider>
+            </Grid>
+            <FacebookProvider appId="620534005365040">
+                <Comments href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} />
+            </FacebookProvider>
           </Grid>
 
           <Grid container item md={3} style={s.column}>

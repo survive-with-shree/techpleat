@@ -4,8 +4,10 @@ import Markdown from 'react-markdown';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
 import { textAlign } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
+import { FacebookProvider, Comments, Like } from 'react-facebook';
 
 import * as URL from '../utils/url';
 import s from '../styles/category.style';
@@ -102,7 +104,17 @@ export default class Category extends React.Component {
           <Grid container item md={8} style={s.column}>
             <Card style={s.md}>
                 <Markdown source={this.state.md} />
+                <CardActions >
+                    <div style={{maxWidth: "200px"}}>
+                        <FacebookProvider appId="620534005365040">
+                            <Like href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} colorScheme="dark" showFaces share />
+                        </FacebookProvider>
+                    </div>
+                </CardActions>
             </Card>
+            <FacebookProvider appId="620534005365040">
+                <Comments href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} />
+            </FacebookProvider>
           </Grid>
         </Grid>
       )

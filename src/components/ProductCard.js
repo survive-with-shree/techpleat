@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import * as URL from '../utils/url';
+import { FacebookProvider, Like } from 'react-facebook';
 
 const useStyles = makeStyles({
   card: {
@@ -74,16 +75,21 @@ export default function ProductCard(props) {
                 sellerView(props.seller) 
                 }
             </CardContent>
-        
             <CardActions >
-            <Button size="small" color="primary">
-                Share
-            </Button>
-            {!props.seller &&
-                <Button href={`/?cid=${cid}&pid=${item.id}`} size="small" color="primary">
-                    Learn More
-                </Button>
-            }
+                <div>
+                    {!props.seller &&
+                        <Button href={`/?cid=${cid}&pid=${item.id}`} size="small" color="primary">
+                            Learn More
+                        </Button>
+                    }
+                </div>
+            </CardActions>
+            <CardActions >
+                <div style={{maxWidth: "200px"}}>
+                    <FacebookProvider appId="620534005365040">
+                        <Like href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} colorScheme="dark" showFaces  share />
+                    </FacebookProvider>
+                </div>
             </CardActions>
         </Card>
         </div>

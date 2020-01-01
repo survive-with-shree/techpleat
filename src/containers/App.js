@@ -30,7 +30,7 @@ export default function App() {
         <Grid container item md={12} style={s.titleBar}>
           <Grid container item md={12} spacing={1}>
             <Grid item md={3} style={s.title}>
-              <h1> TechPleat </h1>
+              <h1> <a href="/">TechPleat </a></h1>
             </Grid>
             <Grid container item md={6} style={s.slogan}>
               <h3> Open source platform for reviews by crowd sourced reviewers </h3>
@@ -45,7 +45,7 @@ export default function App() {
             <Grid item md={6} style={{textAlign: "center"}}>
               <Interactive
                 as="a"
-                href="https://github.com/survive-with-shree/techpleat#readme"
+                href="https://github.com/techpleat/techpleat#readme"
                 interactiveChild
                 focus={{}}
                 touchActive={{}}

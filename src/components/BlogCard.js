@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import * as URL from '../utils/url';
+import { FacebookProvider, Like } from 'react-facebook';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -47,7 +48,10 @@ export default function BlogCard(props) {
                         </a>
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        {calendarDate} | {item.author} 
+                        {calendarDate} | {item.author}
+                        <FacebookProvider appId="620534005365040">
+                            <Like href={`https://techpleat.com/?cid=${cid}&bid=${item.id}`} colorScheme="dark" showFaces share />
+                        </FacebookProvider> 
                     </Typography>
                 </CardContent>
             </div>

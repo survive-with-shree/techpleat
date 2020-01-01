@@ -44,13 +44,7 @@ export default function Timeline(props) {
           }
           title={props.event.title}
           subheader={`${props.event.author} - ${calendarDate}`}
-        />
-        <CardActions >
-            <Button href={props.event.link} size="small" color="primary">
-                Learn More
-            </Button>
-        </CardActions>
-        
+        />        
     </Card>
   );
 }
