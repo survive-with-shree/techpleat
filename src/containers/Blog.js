@@ -104,17 +104,13 @@ export default class Category extends React.Component {
           <Grid container item md={8} style={s.column}>
             <Card style={s.md}>
                 <Markdown source={this.state.md} />
-                <CardActions >
-                    <div style={{maxWidth: "200px"}}>
-                        <FacebookProvider appId="620534005365040">
-                            <Like href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} colorScheme="dark" showFaces share />
-                        </FacebookProvider>
-                    </div>
-                </CardActions>
             </Card>
-            <FacebookProvider appId="620534005365040">
-                <Comments href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} />
-            </FacebookProvider>
+            <Grid item md={12} style={s.row}>
+                <FacebookProvider appId="620534005365040">
+                    <Like href={`https://techpleat.com/?cid=${cid}&bid=${item.id}`} colorScheme="dark" showFaces share />
+                    <Comments href={`https://techpleat.com/?cid=${cid}&bid=${item.id}`} />
+                </FacebookProvider>
+            </Grid>
           </Grid>
         </Grid>
       )
