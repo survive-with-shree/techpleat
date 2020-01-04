@@ -7,7 +7,10 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import { textAlign } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { FacebookProvider, Comments, Like } from 'react-facebook';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 import * as URL from '../utils/url';
 import s from '../styles/feed.style';
@@ -108,12 +111,19 @@ export default class Feed extends React.Component {
             <Grid container item md={12} key={index}>
               {(this.state.allFeed[index].feed.length != 0) &&
                 <Grid container item style={s.feed}>
-                  <Grid container item md={12} key={index}>
-                    <Typography variant="h6" style={s.heading}>
-                      <a href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
-                        {category} Feed
-                      </a>
-                    </Typography>
+                  <Grid container item md={12} key={index}>                  
+                    <Grid container item xs={10} key={index}>
+                      <Typography variant="h4" style={s.heading}>
+                        <a href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
+                          {category} Feed 
+                        </a>
+                      </Typography>
+                    </Grid>
+                    <Grid container item xs={2} key={index} >
+                      <Fab color="primary" aria-label="add" size="small" href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
+                        <AddIcon />
+                      </Fab>
+                    </Grid>                    
                   </Grid>
                   <Grid container item md={12} key={index}>
                     {this.state.allFeed[index].feed.map((feed, index) => (
