@@ -58,7 +58,7 @@ export default class Home extends React.Component {
                 <Grid container item md={12}>
                     {this.state.category.map((item, index) => (
                         <Grid container item md={12}>
-                            <Card variant="outlined">
+                            <Card variant="outlined" style={{width: "100%"}}>
                                 <CardHeader title={item}/>
                                 <CardContent>
                                     <a herf={`/?cid=${item.toLowerCase()}&pid=_`}> 
