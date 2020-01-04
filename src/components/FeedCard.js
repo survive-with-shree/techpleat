@@ -44,25 +44,35 @@ export default function FeedCard(props) {
             <div className={classes.details}>
                 {displayDetails && 
                     <CardContent className={classes.content}>
-                        <Typography component="h5" variant="h5">
-                            <a href={`/?cid=${cid}&bid=${item.id}`} style={{textAlign: "center"}}>
-                                {item.title}
+                        <Typography component="p" variant="h5">
+                            <a href={`/?cid=${cid}&fid=${item.id}`} style={{textAlign: "center"}}>
+                                <b>{item.title}</b>
                             </a>
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary">
-                            {calendarDate} | {item.author}
-                            <FacebookProvider appId="620534005365040">
-                                <Like href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} colorScheme="dark" showFaces share />
-                            </FacebookProvider>
+                            {calendarDate} 
+                            <br/>
+                            {item.author}
+                            <div style={{marginLeft: "-30px"}}>
+                                <FacebookProvider appId="620534005365040">
+                                    <Like href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} colorScheme="dark" layout="button_count" share width="120px" />
+                                </FacebookProvider>
+                            </div>
                         </Typography>
+                        
                     </CardContent>
                 }
                 {(displayDetails == false) && 
                     <CardContent className={classes.content}>
                         <Typography component="p" variant="p">
-                            <a href={`/?cid=${cid}&bid=${item.id}`} style={{textAlign: "center"}}>
+                            <a href={`/?cid=${cid}&fid=${item.id}`} style={{textAlign: "center"}}>
                                 <b>{item.title}</b>
                             </a>
+                            <div style={{marginLeft: "-78px", width: "100px", height: "20px", marginTop: "2vh"}}>
+                                <FacebookProvider appId="620534005365040">
+                                    <Like href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} colorScheme="dark" layout="button_count" width="120px" />
+                                </FacebookProvider>
+                            </div>
                         </Typography>
                     </CardContent>
                 }
@@ -72,6 +82,7 @@ export default function FeedCard(props) {
                 image={`${URL.docs}category/${cid}/blog/img/${item.id}_0.jpg`}
                 title={item.title}
             />
+
         </Card>
     );
   

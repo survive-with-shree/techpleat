@@ -10,13 +10,13 @@ import Typography from '@material-ui/core/Typography';
 import { FacebookProvider, Comments, Like } from 'react-facebook';
 
 import * as URL from '../utils/url';
-import s from '../styles/category.style';
+import s from '../styles/feed.style';
 
 import SpecTable from '../components/SpecTable';
 import FeedCard from '../components/FeedCard';
 import Timeline from '../components/Timeline';
 
-export default class Category extends React.Component {
+export default class Feed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,13 +31,10 @@ export default class Category extends React.Component {
     let cid = location.search.match("(cid=[a-z]*)")
     let fid = location.search.match("(fid=[0-9_]*)")
     if (fid == null && cid == null) {
-      console.log("fid and cid is null")
       let categoryIndex = fetch(`${URL.docs}/category/index.json`)
       .then(res => res.json())
       .then((result) => {   
         categoryIndex = result.category
-        categoryIndex = [ "Mobile" ]
-        
         let promises = categoryIndex.map((item, index) => {
           return fetch(`${URL.docs}category/${item.toLowerCase()}/feed/index.json`)
         })
@@ -60,6 +57,7 @@ export default class Category extends React.Component {
     } else {
       let cid = location.search.match("(cid=[a-z]*)")[0].split("=")[1]
       let fid = location.search.match("(fid=[0-9_]*)")[0].split("=")[1]
+      console.log(cid + ' ' + fid)
       if (fid == "_") {
         fetch(`${URL.docs}category/${cid}/feed/index.json`)
         .then(res => res.json())
@@ -108,11 +106,24 @@ export default class Category extends React.Component {
         <Grid container item>     
           {this.state.categories.map((category, index) => (
             <Grid container item md={12} key={index}>
-              {this.state.allFeed[index].feed.map((feed, index) => (
-                <Grid container item md={3} key={index}>
-                  <FeedCard feed={feed} categoryId={category.toLowerCase()} displayDetails={false}/>
+              {(this.state.allFeed[index].feed.length != 0) &&
+                <Grid container item style={s.feed}>
+                  <Grid container item md={12} key={index}>
+                    <Typography variant="h6" style={s.heading}>
+                      <a href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
+                        {category} Feed
+                      </a>
+                    </Typography>
+                  </Grid>
+                  <Grid container item md={12} key={index}>
+                    {this.state.allFeed[index].feed.map((feed, index) => (
+                      <Grid container item md={3} key={index}>
+                        <FeedCard feed={feed} categoryId={category.toLowerCase()} displayDetails={false}/>
+                      </Grid>
+                    ))}
+                  </Grid>
                 </Grid>
-              ))}
+              }
             </Grid>
           ))}
         </Grid>
@@ -120,12 +131,9 @@ export default class Category extends React.Component {
     } else if (fid == "_") {
       return (
         <Grid container item>
-          {this.state.feed.map((item, index) => (
-            <Grid container item md={12} key={index}>
-              <FeedCard 
-                feed={item}
-                categoryId={cid}
-              />
+          {this.state.feed.map((feed, index) => (
+            <Grid container item md={3} key={index}>
+              <FeedCard feed={feed} categoryId={cid} displayDetails={true}/>
             </Grid>
           ))}
         </Grid>
@@ -173,9 +181,9 @@ export default class Category extends React.Component {
     let cid = location.search.match("(cid=[a-z]*)")
     let fid = location.search.match("(fid=[0-9_]*)")
 
-    if (cid != null && fid != null) {      
-      let cid = cid[0].split("=")[1]
-      let fid = fid[0].split("=")[1]
+    if (cid != null && fid != null) {
+      cid = cid[0].split("=")[1]
+      fid = fid[0].split("=")[1]
     }
 
     return this.renderPage(cid, fid);

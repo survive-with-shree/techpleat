@@ -43,9 +43,6 @@ export default class Home extends React.Component {
     return (
         <Grid container item md={12}>
             <Grid container item md={8}>
-                <Typography variant="h4" style={s.heading} >
-                    Feed
-                </Typography>
                 <Feed />
             </Grid>
             <Grid container item md={4}>

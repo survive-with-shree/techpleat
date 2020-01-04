@@ -5,23 +5,27 @@ import Grid from '@material-ui/core/Grid';
 import Home from './Home';
 import Category from './Category';
 import Blog from './Blog';
+import Feed from './Feed';
+
 import PageNotFound from './PageNotFound';
 import s from '../styles/app.style';
 
 export default function App() {
   let cid = location.search.match("(cid=[a-z]*)")
-  if (cid != null) cid = cid[0].split("=")[1]
-  
   let pid = location.search.match("(pid=[0-9_]*)")
-  if (pid != null) pid = pid[0].split("=")[1]
-  
   let bid = location.search.match("(bid=[0-9_]*)")
+  let fid = location.search.match("(fid=[0-9_]*)")
+
+  if (cid != null) cid = cid[0].split("=")[1]
+  if (pid != null) pid = pid[0].split("=")[1]
   if (bid != null) bid = bid[0].split("=")[1]
+  if (fid != null) fid = fid[0].split("=")[1]
   
   const contentGenrator = (cid, pid) => {
     if (cid == null) return <Home/>
     else if (pid != null)  return <Category/>
     else if (bid != null)  return <Blog />
+    else if (fid != null)  return <Feed />
   }
 
   return (
