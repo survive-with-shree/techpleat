@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Feed from './Feed';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
 
 import { Code } from '../styles/style';
 import * as URL from '../utils/url';
@@ -47,46 +51,29 @@ export default class Home extends React.Component {
             </Grid>
             <Grid container item md={4}>
                 <Grid container item md={12}>
-                    <Grid container item md={12}>
-                        <Typography variant="h4">
-                            Product Specification
-                        </Typography>
-                    </Grid>
-                    <Grid container item md={12}>
-                        <ol>
-                        {this.state.category.map((item, index) => (
-                            <li key={index}>
-                            <Interactive
-                                as={Link}
-                                {...s.link}
-                                to={`/?cid=${item.toLowerCase()}&pid=_`}>
-                                {item}
-                            </Interactive>
-                            </li>
-                        ))}
-                        </ol>
-                    </Grid>
+                    <Typography variant="h4">
+                        Product Specification and Blogs
+                    </Typography>
                 </Grid>
                 <Grid container item md={12}>
-                    <Grid container item md={12}>
-                        <Typography variant="h4" >
-                            Blog category
-                        </Typography>
-                    </Grid>
-                    <Grid container item md={12}>    
-                        <ol>
-                        {this.state.category.map((item, index) => (
-                            <li key={index}>
-                            <Interactive
-                                as={Link}
-                                {...s.link}
-                                to={`/?cid=${item.toLowerCase()}&bid=_`}>
-                                {item}
-                            </Interactive>
-                            </li>
-                        ))}
-                        </ol>
-                    </Grid>
+                    {this.state.category.map((item, index) => (
+                        <Grid container item md={12}>
+                            <Card variant="outlined">
+                                <CardHeader title={item}/>
+                                <CardContent>
+                                    <a herf={`/?cid=${item.toLowerCase()}&pid=_`}> 
+                                        <Button color="primary"> Specifications </Button>
+                                    </a> 
+                                    <a herf={`/?cid=${item.toLowerCase()}&bid=_`}>
+                                        <Button color="primary"> Blog </Button>
+                                    </a> 
+                                    <a herf={`/?cid=${item.toLowerCase()}&fid=_`}>
+                                            <Button color="primary"> Feed </Button>
+                                    </a>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
                 </Grid>
             </Grid>
         </Grid>
