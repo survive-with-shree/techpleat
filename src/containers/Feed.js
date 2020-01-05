@@ -118,29 +118,30 @@ export default class Feed extends React.Component {
                   top: "50%",
                   backgroundColor: "#ffffff73",
                   paddingLeft: "1vh"}}>
-                  <Grid container item md={12} key={index} style={{justifyContent: "center"}}>
+                  <Grid container item md={6} key={index} style={{ paddingTop: "10px"}}>
                     <h1 style={{
                       background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
-                      fontSize: "8vh", 
-                      fontWeight: "100",
+                      fontSize: "35px", 
+                      fontWeight: "400",
                       webkitBackgroundClip: "text", 
-                      webkitTextFillColor: "transparent"}}>
+                      webkitTextFillColor: "transparent",
+                      paddingLeft: "1vh"}}>
                       <a href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
-                        {category} 
+                        #{category} 
                       </a>
                     </h1>
                   </Grid>
-                  <Grid container item md={12} key={index} style={{justifyContent: "center"}}>
-                    <div style={{paddingRight: "2vw", paddingLeft: "2vw", paddingTop: "10px"}}>
-                      <Button disableElevation variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&pid=_`}>    Gallery
+                  <Grid container item md={6} key={index} style={{paddingLeft: "1vh"}}>
+                    <div style={{paddingRight: "1vw", paddingLeft: "0vw", paddingTop: "10px"}}>
+                      <Button disableElevation size="small" variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&pid=_`}>    {category} Gallery
                       </Button>
                     </div>
-                    <div style={{paddingRight: "2vw", paddingLeft: "2vw", paddingTop: "10px"}}>
-                      <Button disableElevation  variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&fid=_`}>    Feed
+                    <div style={{paddingRight: "1vw", paddingLeft: "0vw", paddingTop: "10px"}}>
+                      <Button disableElevation size="small"  variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&fid=_`}>    Feed
                       </Button>
                     </div>
-                    <div style={{paddingRight: "2vw", paddingLeft: "2vw", paddingTop: "10px"}}>
-                      <Button disableElevation variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&bid=_`}>    Blog 
+                    <div style={{paddingRight: "1vw", paddingLeft: "0vw", paddingTop: "10px"}}>
+                      <Button disableElevation size="small" variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&bid=_`}>    Blog 
                       </Button> 
                     </div>
                   </Grid>                    
