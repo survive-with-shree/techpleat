@@ -68,7 +68,7 @@ export default function Timeline(props) {
               src={`https://www.youtube.com/embed/${props.event.link.split("v=")[1]}`}
               frameBorder='0'
               allow='autoplay; encrypted-media'
-              allowfullscreen> 
+              allowfullscreen="true">
               </iframe>
           </div>
           <DialogActions>

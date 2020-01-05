@@ -75,7 +75,7 @@ export default class Category extends React.Component {
       return (
         <Grid container item>
           {this.state.blog.map((item, index) => (
-            <Grid container item md={12} key={index}>
+            <Grid container item md={6} key={index}>
               <BlogCard 
                 blog={item}
                 categoryId={cid}

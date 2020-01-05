@@ -110,7 +110,8 @@ export default class Feed extends React.Component {
           {this.state.categories.map((category, index) => (
             <Grid container item md={6} key={index}>
               {(this.state.allFeed[index].feed.length != 0) &&
-                <Grid container item 
+                <Grid container item
+                  id={category} 
                   md={12}
                   key={index} style={s.feed}
                   style={{
@@ -147,7 +148,7 @@ export default class Feed extends React.Component {
                   </Grid>                    
                   <Grid container item md={12} key={index}>
                     {this.state.allFeed[index].feed.map((feed, index) => (
-                      <Grid item md={4} key={index}>
+                      <Grid container item md={4} key={index}>
                         <FeedCard feed={feed} categoryId={category.toLowerCase()} displayDetails={false}/>
                       </Grid>
                     ))}
