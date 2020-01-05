@@ -29,7 +29,7 @@ export default function App() {
   }
 
   return (
-    <Grid container style={s.rootContainer}>
+    <Grid container item style={s.rootContainer}>
       <Grid container item md={12}>
         <Grid container item md={12} style={s.titleBar}>
           <Grid container item md={12} spacing={1}>

@@ -108,26 +108,37 @@ export default class Feed extends React.Component {
       return (
         <Grid container item>     
           {this.state.categories.map((category, index) => (
-            <Grid container item md={12} key={index}>
+            <Grid container item md={6} key={index}>
               {(this.state.allFeed[index].feed.length != 0) &&
-                <Grid container item style={s.feed}>
-                  <Grid container item md={12} key={index}>                  
-                    <Grid container item xs={10} key={index}>
-                      <Typography variant="h4" style={s.heading}>
-                        <a href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
-                          {category} Feed 
-                        </a>
-                      </Typography>
-                    </Grid>
-                    <Grid container item xs={2} key={index} >
-                      <Fab color="primary" aria-label="add" size="small" href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
-                        <AddIcon />
-                      </Fab>
-                    </Grid>                    
+                <Grid container item 
+                  md={12}
+                  key={index} style={s.feed}
+                  style={{
+                  margin: "1vh",
+                  justifyContent: "center", 
+                  top: "50%",
+                  backgroundColor: "#ffffff73",
+                  paddingLeft: "1vh"}}>
+                  <Grid container item sm={6} key={index}>
+                    <h1 style={{ 
+                      background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
+                      fontSize: "8vh", 
+                      fontWeight: "100",
+                      webkitBackgroundClip: "text", 
+                      webkitTextFillColor: "transparent"}}>
+                      <a href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
+                        {category} 
+                      </a>
+                    </h1>
                   </Grid>
+                  <Grid container item sm={6} key={index} style={{justifyContent: "space-evenly", height: "50px", paddingTop: "20px"}}>
+                    <Button disableElevation size="large" variant="outlined" color="primary" herf={`/?cid=${category.toLowerCase()}&pid=_`}> Gallery </Button>
+                    <Button disableElevation size="large" variant="outlined" color="primary" herf={`/?cid=${category.toLowerCase()}&bid=_`}> Blog </Button>
+                    <Button disableElevation size="large" variant="outlined" color="primary" herf={`/?cid=${category.toLowerCase()}&fid=_`}> Feed </Button>
+                  </Grid>                    
                   <Grid container item md={12} key={index}>
                     {this.state.allFeed[index].feed.map((feed, index) => (
-                      <Grid container item md={3} key={index}>
+                      <Grid container item md={4} key={index}>
                         <FeedCard feed={feed} categoryId={category.toLowerCase()} displayDetails={false}/>
                       </Grid>
                     ))}

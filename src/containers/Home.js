@@ -45,38 +45,9 @@ export default class Home extends React.Component {
 
   render() {
     return (
-        <Grid container item md={12}>
-            <Grid container item md={8}>
-                <Feed />
-            </Grid>
-            <Grid container item md={4}>
-                <Grid container item md={12}>
-                    <Typography variant="h4">
-                        Product Specification and Blogs
-                    </Typography>
-                </Grid>
-                <Grid container item md={12}>
-                    {this.state.category.map((item, index) => (
-                        <Grid container item md={12}>
-                            <Card variant="outlined" style={{width: "100%"}}>
-                                <CardHeader title={item}/>
-                                <CardContent>
-                                    <a herf={`/?cid=${item.toLowerCase()}&pid=_`}> 
-                                        <Button color="primary"> Specifications </Button>
-                                    </a> 
-                                    <a herf={`/?cid=${item.toLowerCase()}&bid=_`}>
-                                        <Button color="primary"> Blog </Button>
-                                    </a> 
-                                    <a herf={`/?cid=${item.toLowerCase()}&fid=_`}>
-                                            <Button color="primary"> Feed </Button>
-                                    </a>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Grid>
-        </Grid>
+      <Grid container item md={12}>
+        <Feed />
+      </Grid>
     );
   }
 }
