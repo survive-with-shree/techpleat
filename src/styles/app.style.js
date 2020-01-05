@@ -19,7 +19,7 @@ s.body = {
   fontWeight: '300',
   fontSize: '16px',
   letterSpacing: '0.025em',
-  padding: '7vh 0vw',
+  padding: '2vh 0vw',
   left: '50vw',
 
   WebkitTextSizeAdjust: 'none',
