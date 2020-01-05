@@ -106,7 +106,7 @@ export default class Feed extends React.Component {
 
     if (cid == null && fid == null) {
       return (
-        <Grid container item>     
+        <Grid container item>
           {this.state.categories.map((category, index) => (
             <Grid container item md={6} key={index}>
               {(this.state.allFeed[index].feed.length != 0) &&
@@ -116,8 +116,8 @@ export default class Feed extends React.Component {
                   style={{
                   margin: "1vh",
                   top: "50%",
-                  backgroundColor: "#ffffff73",
-                  paddingLeft: "1vh"}}>
+                  backgroundColor: "#ffffff73"
+                  }}>
                   <Grid container item md={6} key={index} style={{ paddingTop: "10px"}}>
                     <h1 style={{
                       background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
@@ -147,7 +147,7 @@ export default class Feed extends React.Component {
                   </Grid>                    
                   <Grid container item md={12} key={index}>
                     {this.state.allFeed[index].feed.map((feed, index) => (
-                      <Grid container item md={4} key={index}>
+                      <Grid item md={4} key={index}>
                         <FeedCard feed={feed} categoryId={category.toLowerCase()} displayDetails={false}/>
                       </Grid>
                     ))}
@@ -182,20 +182,25 @@ export default class Feed extends React.Component {
             backgroundColor: "#ffffff73"}} >
             <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.title}</h1>
           </Grid>
-          <Grid container item md={2} style={s.column}>
-          </Grid>
+          <Grid container item md={2} style={s.column}></Grid>
         
           <Grid container item md={8} style={s.column}>
             <Card style={s.md}>
-                <Markdown source={this.state.md} />
-            </Card>
-            <Grid item md={12} style={s.row}>
-                <FacebookProvider appId="620534005365040">
-                    <Like href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} colorScheme="dark" showFaces share />
-                    <Comments href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} />
-                </FacebookProvider>
-            </Grid>
+              <Markdown source={this.state.md} />
+              <br/>
+              <FacebookProvider appId="620534005365040">
+                <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
+              </FacebookProvider>
+            </Card> 
           </Grid>
+          
+          <Grid item md={12} style={s.row}>
+            <FacebookProvider appId="620534005365040">
+              <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
+              <Comments href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} />
+            </FacebookProvider>
+          </Grid>
+            
         </Grid>
       )
     } else {

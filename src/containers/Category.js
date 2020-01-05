@@ -124,20 +124,21 @@ export default class Category extends React.Component {
               </Card>
             </Grid>
             <Grid item md={12} style={s.row}>
-                <FacebookProvider appId="620534005365040">
-                    <Like href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} colorScheme="dark" showFaces share />
-                </FacebookProvider>
+              <FacebookProvider appId="620534005365040">
+                  <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
+              </FacebookProvider>
             </Grid>
-            <FacebookProvider appId="620534005365040">
-                <Comments href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} />
-            </FacebookProvider>
           </Grid>
-
           <Grid container item md={3} style={s.column}>
             <Grid item md={12}>
               {this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
             </Grid>
           </Grid> 
+          <Grid container item md={12} style={s.column}>
+            <FacebookProvider appId="620534005365040">
+                <Comments href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} />
+            </FacebookProvider>
+          </Grid>
         </Grid>
       )
     } else {

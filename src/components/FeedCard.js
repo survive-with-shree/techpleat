@@ -55,7 +55,7 @@ export default function FeedCard(props) {
                             {item.author}
                             <div style={{marginLeft: "-30px"}}>
                                 <FacebookProvider appId="620534005365040">
-                                    <Like href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} colorScheme="dark" layout="button_count" share width="120px" />
+                                    <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" layout="button_count" share width="120px" />
                                 </FacebookProvider>
                             </div>
                         </Typography>
@@ -70,7 +70,7 @@ export default function FeedCard(props) {
                             </a>
                             <div style={{marginLeft: "-78px", width: "100px", height: "20px", marginTop: "2vh"}}>
                                 <FacebookProvider appId="620534005365040">
-                                    <Like href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} colorScheme="dark" layout="button_count" width="120px" />
+                                    <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" layout="button_count" width="120px" />
                                 </FacebookProvider>
                             </div>
                         </Typography>

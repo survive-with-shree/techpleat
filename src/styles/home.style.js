@@ -3,7 +3,7 @@ import style from './style';
 const s = Object.create(style);
 
 s.feed = {
-  margin: '1vh 1vh',
+  margin: '0.5vh 0.5vh',
 };
 
 s.heading = {

@@ -51,7 +51,6 @@ export default function ProductCard(props) {
     const cid = props.categoryId;
 
     return (
-        <div>
         <Card className={classes.card} variant="outlined">
             <br/>
             <a href={`/?cid=${cid}&pid=${item.id}`} style={{textAlign: "center"}}>
@@ -87,12 +86,11 @@ export default function ProductCard(props) {
             <CardActions >
                 <div style={{maxWidth: "200px"}}>
                     <FacebookProvider appId="620534005365040">
-                        <Like href={`https://techpleat.com/?cid=${cid}&pid=${item.id}`} colorScheme="dark" showFaces  share />
+                        <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces  share />
                     </FacebookProvider>
                 </div>
             </CardActions>
         </Card>
-        </div>
     );
   
 }
