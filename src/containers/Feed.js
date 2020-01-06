@@ -11,6 +11,8 @@ import Button from '@material-ui/core/Button';
 import { FacebookProvider, Comments, Like } from 'react-facebook';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import IconButton from '@material-ui/core/IconButton';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 import * as URL from '../utils/url';
 import s from '../styles/feed.style';
@@ -128,7 +130,14 @@ export default class Feed extends React.Component {
                       webkitTextFillColor: "transparent",
                       paddingLeft: "1vh"}}>
                       <a href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
-                        #{category} 
+                        #{category}
+                        <IconButton
+                          aria-label="github"
+                          component="a"
+                          target="_blank" 
+                          href={`${URL.git}category/index.json`}>
+                          <GitHubIcon fontSize="inherit" />
+                        </IconButton>
                       </a>
                     </h1>
                   </Grid>
@@ -149,7 +158,7 @@ export default class Feed extends React.Component {
                   <Grid container item md={12} key={index}>
                     {this.state.allFeed[index].feed.map((feed, index) => (
                       <Grid container item md={4} key={index}>
-                        <FeedCard feed={feed} categoryId={category.toLowerCase()} displayDetails={false}/>
+                        <FeedCard feed={feed} categoryId={category.toLowerCase()} displayDetails={false} />
                       </Grid>
                     ))}
                   </Grid>
@@ -162,6 +171,34 @@ export default class Feed extends React.Component {
     } else if (fid == "_") {
       return (
         <Grid container item>
+          <Grid container item 
+            md={12}
+            style={{
+            marginBottom: "1vh",
+            justifyContent: "center", 
+            top: "50%",
+            backgroundColor: "#ffffff73"}} >
+            <h1 style={{
+              background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
+              webkitBackgroundClip: "text", 
+              webkitTextFillColor: "transparent", 
+              fontSize: "8vh", 
+              fontWeight: "100"}}>
+              {cid.toUpperCase()} FEED
+              
+            </h1>
+          
+            <Grid container item md={12} style={{justifyContent: "center"}}>
+              <h5>Feeds are updated regularly</h5>
+              <IconButton
+                  aria-label="github"
+                  component="a"
+                  target="_blank" 
+                  href={`${URL.git}category/${cid}/feed/index.json`}>
+                  <GitHubIcon fontSize="inherit" />
+                </IconButton>
+            </Grid>
+          </Grid>
           {this.state.feed.map((feed, index) => (
             <Grid container item md={3} key={index}>
               <FeedCard feed={feed} categoryId={cid} displayDetails={true}/>
@@ -181,7 +218,17 @@ export default class Feed extends React.Component {
             fontWeight: "100", 
             top: "50%",
             backgroundColor: "#ffffff73"}} >
-            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.title}</h1>
+            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>
+              {item.title}
+              <IconButton
+                aria-label="github"
+                component="a"
+                target="_blank" 
+                href={`${URL.git}category/${cid}/feed/${fid}.md`}>
+                <GitHubIcon fontSize="inherit" />
+              </IconButton>
+            </h1>
+
           </Grid>
           <Grid container item md={2} style={s.column}></Grid>
         
@@ -189,6 +236,13 @@ export default class Feed extends React.Component {
             <Card style={s.md}>
               <Markdown source={this.state.md} />
               <br/>
+              <IconButton
+                aria-label="github"
+                component="a"
+                target="_blank" 
+                href={`${URL.git}category/${cid}/feed/${fid}.md`}>
+                <GitHubIcon fontSize="inherit" />
+              </IconButton>
               <FacebookProvider appId="620534005365040">
                 <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
               </FacebookProvider>

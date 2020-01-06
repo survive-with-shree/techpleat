@@ -8,6 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import { textAlign } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
 import { FacebookProvider, Comments, Like } from 'react-facebook';
+import IconButton from '@material-ui/core/IconButton';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 import * as URL from '../utils/url';
 import s from '../styles/category.style';
@@ -74,6 +76,29 @@ export default class Category extends React.Component {
     if (bid == "_") {
       return (
         <Grid container item>
+          <Grid container item 
+            md={12}
+            style={{
+            marginBottom: "1vh",
+            justifyContent: "center", 
+            top: "50%",
+            backgroundColor: "#ffffff73"}} >
+            <h1 style={{
+              background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
+              webkitBackgroundClip: "text", 
+              webkitTextFillColor: "transparent", 
+              fontSize: "8vh", 
+              fontWeight: "100"}}>
+              {cid.toUpperCase()} BLOGS
+              <IconButton
+                aria-label="github"
+                component="a"
+                target="_blank" 
+                href={`${URL.git}category/${cid}/blog/index.json`}>
+                <GitHubIcon fontSize="inherit" />
+              </IconButton>
+            </h1>
+          </Grid>
           {this.state.blog.map((item, index) => (
             <Grid container item md={6} key={index}>
               <BlogCard 
@@ -96,7 +121,15 @@ export default class Category extends React.Component {
             fontWeight: "100", 
             top: "50%",
             backgroundColor: "#ffffff73"}} >
-            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.title}</h1>
+            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.title}
+            <IconButton
+                aria-label="github"
+                component="a"
+                target="_blank" 
+                href={`${URL.git}category/${cid}/blog/index.json`}>
+                <GitHubIcon fontSize="inherit" />
+              </IconButton>
+            </h1>
           </Grid>
           <Grid container item md={2} style={s.column}>
           </Grid>
@@ -105,6 +138,13 @@ export default class Category extends React.Component {
             <Card style={s.md}>
                 <Markdown source={this.state.md} />
                 <br/>
+                <IconButton
+                  aria-label="github"
+                  component="a"
+                  target="_blank" 
+                  href={`${URL.git}category/${cid}/blog/${bid}.md`}>
+                  <GitHubIcon fontSize="inherit" />
+                </IconButton>
                 <FacebookProvider appId="620534005365040">
                     <Like href={`https://techpleat.com/?cid=${cid}&bid=${item.id}`} colorScheme="dark" showFaces share />
                 </FacebookProvider>
@@ -117,9 +157,6 @@ export default class Category extends React.Component {
                 </FacebookProvider>            
             </Grid>
           </Grid>
-          
-          
-
         </Grid>
       )
     } else {

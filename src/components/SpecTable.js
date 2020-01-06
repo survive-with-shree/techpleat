@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles({
   table: {
@@ -21,7 +23,16 @@ export default function SpecTable(props) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell><b>Feature</b></TableCell>
+            <TableCell>
+              <b>Feature</b>
+              <IconButton
+                aria-label="github"
+                component="a"
+                target="_blank" 
+                href={props.git}>
+                <GitHubIcon fontSize="inherit" />
+              </IconButton>
+            </TableCell>
             <TableCell align="right"><b>Specification</b></TableCell>
           </TableRow>
         </TableHead>

@@ -6,6 +6,9 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import { textAlign } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import GitHubIcon from '@material-ui/icons/GitHub';
+
 import { FacebookProvider, Like, Comments } from 'react-facebook';
 
 import * as URL from '../utils/url';
@@ -79,11 +82,32 @@ export default class Category extends React.Component {
     if (pid == "_") {
       return (
         <Grid container item>
+          <Grid container item 
+            md={12}
+            style={{
+            marginBottom: "1vh",
+            justifyContent: "center", 
+            fontSize: "8vh", 
+            fontWeight: "100", 
+            top: "50%",
+            backgroundColor: "#ffffff73"}} >
+            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>
+              {cid.toUpperCase()} GALLERY
+              <IconButton
+                aria-label="github"
+                component="a"
+                target="_blank" 
+                href={`${URL.git}category/${cid}/index.json`}>
+                <GitHubIcon fontSize="inherit" />
+              </IconButton>
+            </h1>
+          </Grid>
           {this.state.product.map((item, index) => (
             <Grid container item md={3} key={index}>
               <ProductCard 
                 productItem={item}
                 categoryId={cid}
+                git={`${URL.git}category/${cid}/index.json`}
               />
             </Grid>
           ))}
@@ -101,38 +125,68 @@ export default class Category extends React.Component {
             fontWeight: "100", 
             top: "50%",
             backgroundColor: "#ffffff73"}} >
-            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.name}</h1>
+            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>
+              {item.name}
+              <IconButton
+                aria-label="github"
+                component="a"
+                target="_blank" 
+                href={`${URL.git}category/${cid}/index.json`}>
+                <GitHubIcon fontSize="inherit" />
+              </IconButton>
+            </h1>
+            
           </Grid>
 
           <Grid container item md={3} style={s.column}>                
             <ProductCard 
-            productItem={item}
-            categoryId={cid}
-            seller={this.state.seller}/>
+              productItem={item}
+              categoryId={cid}
+              seller={this.state.seller}
+              git={`${URL.git}category/${cid}/index.json`}
+              sellerGit={`${URL.git}category/${cid}/seller/${pid}.json`}
+            />
           </Grid>
 
           <Grid container item md={6} style={s.column}>
             <Grid item md={12} style={{width: "100%"}}>
-              <SpecTable spec={this.state.spec} />
+              <SpecTable spec={this.state.spec} git={`${URL.git}category/${cid}/spec/${pid}.json`}/>
             </Grid>
             <Grid item md={12} style={s.row}>
               <Card style={s.md}>
                 <Typography variant="h4">
-                  Product review
+                  {item.name} Review
+                  <IconButton
+                    aria-label="github"
+                    component="a"
+                    target="_blank" 
+                    href={`${URL.git}category/${cid}/md/${pid}.md`}>
+                    <GitHubIcon fontSize="inherit" />
+                  </IconButton>	
                 </Typography>
                 <Markdown source={this.state.md} />
-              </Card>
-            </Grid>
-            <Grid item md={12} style={s.row}>
-              <FacebookProvider appId="620534005365040">
+                <br/>
+                <FacebookProvider appId="620534005365040">
                   <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
-              </FacebookProvider>
+                </FacebookProvider>
+              </Card>
             </Grid>
           </Grid>
           <Grid container item md={3} style={s.column}>
-            <Grid item md={12}>
-              {this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
-            </Grid>
+            <Typography variant="h4" style={{textAlign: "center"}}>
+              Events 
+              <IconButton
+                aria-label="github"
+                component="a"
+                target="_blank" 
+                href={`${URL.git}category/${cid}/timeline/${pid}.json`}>
+                <GitHubIcon fontSize="inherit" />
+              </IconButton>
+              <Grid item md={12}>
+                {this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
+              </Grid>
+            </Typography>
+            
           </Grid> 
           <Grid container item md={12} style={s.column}>
             <FacebookProvider appId="620534005365040">

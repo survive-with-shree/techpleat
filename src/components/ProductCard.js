@@ -10,6 +10,8 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import * as URL from '../utils/url';
 import { FacebookProvider, Like } from 'react-facebook';
 
@@ -25,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-const sellerView = (seller) => {
+const sellerView = (seller, sellerGit) => {
     let currencyList = Object.keys(seller) 
     return (
         <div>
@@ -37,6 +39,13 @@ const sellerView = (seller) => {
                             <Button variant="outlined" size="small" color="primary" href={vendor.link}> 
                                 {vendor.vendor.toUpperCase()}: {vendor.price} {currency} 
                             </Button>
+                            <IconButton
+                                aria-label="github"
+                                component="a"
+                                target="_blank" 
+                                href={sellerGit}>
+                                <GitHubIcon fontSize="inherit" />
+                            </IconButton>	
                         </div>))
                     }
                 </div>
@@ -71,7 +80,7 @@ export default function ProductCard(props) {
                 <br/>
                 
                 {props.seller &&
-                sellerView(props.seller) 
+                sellerView(props.seller, props.sellerGit) 
                 }
             </CardContent>
             <CardActions >
@@ -84,6 +93,13 @@ export default function ProductCard(props) {
                 </div>
             </CardActions>
             <CardActions >
+                <IconButton
+                    aria-label="github"
+                    component="a"
+                    target="_blank" 
+                    href={props.git}>
+                    <GitHubIcon fontSize="inherit" />
+                </IconButton>
                 <div style={{maxWidth: "200px"}}>
                     <FacebookProvider appId="620534005365040">
                         <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces  share />

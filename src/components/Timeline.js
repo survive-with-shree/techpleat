@@ -36,7 +36,7 @@ export default function Timeline(props) {
   const handleClose = () => {setOpen(false)};
 
   return (
-    <Card className={classes.card} key={props.key} >
+    <Card className={classes.card} key={props.key} style={{marginTop: "0.5vh"}}>
       <CardHeader
         avatar={
           <Avatar 
