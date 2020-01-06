@@ -80,20 +80,23 @@ export default class Category extends React.Component {
     }
 
     if (pid == "_") {
+      let windowTitle = `${cid.toUpperCase()} GALLERY`
+      document.title = windowTitle
       return (
         <Grid container item>
           <Grid container item 
             md={12}
             style={{
-            marginBottom: "1vh",
-            justifyContent: "center", 
-            fontSize: "8vh", 
-            fontWeight: "100", 
-            top: "50%",
-            backgroundColor: "#ffffff73"}} >
+              marginBottom: "1vh",
+              justifyContent: "center", 
+              fontSize: "220%", 
+              fontWeight: "200", 
+              top: "50%",
+              backgroundColor: "#ffffff73"}}>
             <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>
-              {cid.toUpperCase()} GALLERY
+              {windowTitle}
               <IconButton
+                style={{marginLeft: "2vw"}}
                 aria-label="github"
                 component="a"
                 target="_blank" 
@@ -114,6 +117,8 @@ export default class Category extends React.Component {
         </Grid>
       )
     } else if (item != null) {
+      let windowTitle = `${item.name}`
+      document.title = windowTitle
       return (
         <Grid container item md={12}>
           <Grid container item 
@@ -121,13 +126,14 @@ export default class Category extends React.Component {
             style={{
             marginBottom: "1vh",
             justifyContent: "center", 
-            fontSize: "8vh", 
-            fontWeight: "100", 
+            fontSize: "240%", 
+            fontWeight: "200", 
             top: "50%",
             backgroundColor: "#ffffff73"}} >
             <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>
-              {item.name}
+              {windowTitle}
               <IconButton
+                style={{marginLeft: "2vw"}}
                 aria-label="github"
                 component="a"
                 target="_blank" 
@@ -157,6 +163,7 @@ export default class Category extends React.Component {
                 <Typography variant="h4">
                   {item.name} Review
                   <IconButton
+                    style={{marginLeft: "2vw"}}
                     aria-label="github"
                     component="a"
                     target="_blank" 
@@ -176,6 +183,7 @@ export default class Category extends React.Component {
             <Typography variant="h4" style={{textAlign: "center"}}>
               Events 
               <IconButton
+                style={{marginLeft: "2vw"}}
                 aria-label="github"
                 component="a"
                 target="_blank" 

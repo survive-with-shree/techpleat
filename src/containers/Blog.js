@@ -74,6 +74,8 @@ export default class Category extends React.Component {
     }
 
     if (bid == "_") {
+      let windowTitle = `${cid.toUpperCase()} BLOGS`
+      document.title = windowTitle
       return (
         <Grid container item>
           <Grid container item 
@@ -87,10 +89,11 @@ export default class Category extends React.Component {
               background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
               webkitBackgroundClip: "text", 
               webkitTextFillColor: "transparent", 
-              fontSize: "8vh", 
-              fontWeight: "100"}}>
-              {cid.toUpperCase()} BLOGS
+              fontSize: "220%", 
+              fontWeight: "200"}}>
+               {windowTitle}
               <IconButton
+                style={{marginLeft: "2vw"}}
                 aria-label="github"
                 component="a"
                 target="_blank" 
@@ -110,6 +113,8 @@ export default class Category extends React.Component {
         </Grid>
       )
     } else if (item != null) {
+      let windowTitle = `${item.title}`
+      document.title = windowTitle
       return (
         <Grid container item md={12}>
           <Grid container item 
@@ -117,18 +122,20 @@ export default class Category extends React.Component {
             style={{
             marginBottom: "1vh",
             justifyContent: "center", 
-            fontSize: "8vh", 
+            fontSize: "230%", 
             fontWeight: "100", 
             top: "50%",
             backgroundColor: "#ffffff73"}} >
-            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>{item.title}
+            <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>
+            {windowTitle}
             <IconButton
-                aria-label="github"
-                component="a"
-                target="_blank" 
-                href={`${URL.git}category/${cid}/blog/index.json`}>
-                <GitHubIcon fontSize="inherit" />
-              </IconButton>
+              style={{marginLeft: "2vw"}}
+              aria-label="github"
+              component="a"
+              target="_blank" 
+              href={`${URL.git}category/${cid}/blog/index.json`}>
+              <GitHubIcon fontSize="inherit" />
+            </IconButton>
             </h1>
           </Grid>
           <Grid container item md={2} style={s.column}>
@@ -139,6 +146,7 @@ export default class Category extends React.Component {
                 <Markdown source={this.state.md} />
                 <br/>
                 <IconButton
+                  style={{marginLeft: "2vw"}}
                   aria-label="github"
                   component="a"
                   target="_blank" 

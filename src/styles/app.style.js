@@ -32,21 +32,19 @@ s.body = {
 s.titleBar = {
   background: 'linear-gradient(60deg, rgb(287, 35, 337), rgb(229, 57, 53))',
   color: 'white',
-  padding: '3vh 8px',
+  padding: '1.5vh 0vh',
   marginBottom: '0.5vh'
 };
 
 s.title = {
   fontWeight: "800",
   textAlign: "center", 
-  fontSize: "50px", 
-  textAlign: "right"
+  fontSize: "300%"
 };
 
 s.slogan = {
   fontWeight: "400",
-  paddingLeft: "1.5vw",
-  textAlign: "center"
+  paddingLeft: "1.5vw"
 };
 
 s.social = {

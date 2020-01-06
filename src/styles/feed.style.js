@@ -25,7 +25,7 @@ s.timeline = {
 };
 
 s.column = {
-  padding: "1vw",
+  padding: "0.25vw",
   justifyContent: "center"
 };
 

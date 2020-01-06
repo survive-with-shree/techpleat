@@ -26,6 +26,7 @@ export default function SpecTable(props) {
             <TableCell>
               <b>Feature</b>
               <IconButton
+                style={{marginLeft: "2vw"}}
                 aria-label="github"
                 component="a"
                 target="_blank" 

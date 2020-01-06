@@ -117,21 +117,23 @@ export default class Feed extends React.Component {
                   md={12}
                   key={index} style={s.feed}
                   style={{
-                  margin: "1vh",
-                  top: "50%",
-                  backgroundColor: "#ffffff73"
+                    margin: "0.5vh",
+                    top: "50%",
+                    backgroundColor: "#ffffff73",
+                    marginBottom: "0.5vw"
                   }}>
                   <Grid container item md={6} key={index} style={{ paddingTop: "10px"}}>
                     <h1 style={{
                       background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
-                      fontSize: "35px", 
-                      fontWeight: "400",
+                      fontSize: "220%", 
+                      fontWeight: "200",
                       webkitBackgroundClip: "text", 
                       webkitTextFillColor: "transparent",
-                      paddingLeft: "1vh"}}>
+                      paddingLeft: "0.5vh"}}>
                       <a href={`/?cid=${category.toLowerCase()}&fid=_`} style={{textAlign: "center"}}>
                         #{category}
                         <IconButton
+                          style={{marginLeft: "2vw"}}
                           aria-label="github"
                           component="a"
                           target="_blank" 
@@ -141,20 +143,20 @@ export default class Feed extends React.Component {
                       </a>
                     </h1>
                   </Grid>
-                  <Grid container item md={6} key={index} style={{paddingLeft: "1vh"}}>
-                    <div style={{paddingRight: "1vw", paddingLeft: "0vw", paddingTop: "10px"}}>
+                  <Grid container item md={6} key={index} style={{paddingLeft: "1vh", paddingTop: "0.75vw"}}>
+                    <div style={{paddingRight: "1vw"}}>
                       <Button disableElevation size="small" variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&pid=_`}>    {category} Gallery
                       </Button>
                     </div>
-                    <div style={{paddingRight: "1vw", paddingLeft: "0vw", paddingTop: "10px"}}>
+                    <div style={{paddingRight: "1vw"}}>
                       <Button disableElevation size="small"  variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&fid=_`}>    Feed
                       </Button>
                     </div>
-                    <div style={{paddingRight: "1vw", paddingLeft: "0vw", paddingTop: "10px"}}>
+                    <div style={{paddingRight: "1vw"}}>
                       <Button disableElevation size="small" variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&bid=_`}>    Blog 
                       </Button> 
                     </div>
-                  </Grid>                    
+                  </Grid>
                   <Grid container item md={12} key={index}>
                     {this.state.allFeed[index].feed.map((feed, index) => (
                       <Grid container item md={4} key={index}>
@@ -169,6 +171,8 @@ export default class Feed extends React.Component {
         </Grid>
       )
     } else if (fid == "_") {
+      let windowTitle = `${cid.toUpperCase()} FEED`
+      document.title = windowTitle
       return (
         <Grid container item>
           <Grid container item 
@@ -182,22 +186,18 @@ export default class Feed extends React.Component {
               background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
               webkitBackgroundClip: "text", 
               webkitTextFillColor: "transparent", 
-              fontSize: "8vh", 
-              fontWeight: "100"}}>
-              {cid.toUpperCase()} FEED
-              
-            </h1>
-          
-            <Grid container item md={12} style={{justifyContent: "center"}}>
-              <h5>Feeds are updated regularly</h5>
+              fontSize: "250%", 
+              fontWeight: "200"}}>
+              {windowTitle}
               <IconButton
+                  style={{marginLeft: "2vw"}}
                   aria-label="github"
                   component="a"
                   target="_blank" 
                   href={`${URL.git}category/${cid}/feed/index.json`}>
                   <GitHubIcon fontSize="inherit" />
-                </IconButton>
-            </Grid>
+                </IconButton>         
+            </h1>
           </Grid>
           {this.state.feed.map((feed, index) => (
             <Grid container item md={3} key={index}>
@@ -207,6 +207,8 @@ export default class Feed extends React.Component {
         </Grid>
       )
     } else if (item != null) {
+      let windowTitle = `${item.title} for Janurary 2020`
+      document.title = windowTitle
       return (
         <Grid container item md={12}>
           <Grid container item 
@@ -214,13 +216,14 @@ export default class Feed extends React.Component {
             style={{
             marginBottom: "1vh",
             justifyContent: "center", 
-            fontSize: "8vh", 
-            fontWeight: "100", 
+            fontSize: "220%", 
+            fontWeight: "200", 
             top: "50%",
             backgroundColor: "#ffffff73"}} >
             <h1 style={{background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", webkitBackgroundClip: "text", webkitTextFillColor: "transparent"}}>
-              {item.title}
+              {windowTitle}
               <IconButton
+                style={{marginLeft: "2vw"}}
                 aria-label="github"
                 component="a"
                 target="_blank" 
@@ -237,6 +240,7 @@ export default class Feed extends React.Component {
               <Markdown source={this.state.md} />
               <br/>
               <IconButton
+                style={{marginLeft: "2vw"}}
                 aria-label="github"
                 component="a"
                 target="_blank" 

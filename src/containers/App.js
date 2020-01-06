@@ -32,14 +32,12 @@ export default function App() {
     <Grid container item style={s.rootContainer}>
       <Grid container item md={12}>
         <Grid container item md={12} style={s.titleBar}>
-          <Grid container item md={12} spacing={1}>
             <Grid item md={3} style={s.title}>
-              <h1> <a href="/">TechPleat </a></h1>
+              <a href="/"> <h1 style={{alignSelf: "flex-end", margin: "0px", marginLeft: "1vw"}}>TechPleat </h1> </a>
             </Grid>
             <Grid container item md={6} style={s.slogan}>
-              <h3> Open source platform for customers by crowd sourced reviewers </h3>
+              <h3 style={{alignSelf: "flex-end", margin: "0px", marginBottom: "1vw"}}> Open source platform for customers by crowd sourced reviewers </h3>
             </Grid>
-          </Grid>
         </Grid>
         <Grid container item md={12} style={s.body}>
             {contentGenrator(cid, pid)}

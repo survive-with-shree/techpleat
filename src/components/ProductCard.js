@@ -32,7 +32,7 @@ const sellerView = (seller, sellerGit) => {
     return (
         <div>
             <br/>
-            {currencyList.map( (currency) => (
+            {currencyList.map((currency) => (
                 <div>
                     {seller[currency].map((vendor) => (
                         <div>
@@ -40,6 +40,7 @@ const sellerView = (seller, sellerGit) => {
                                 {vendor.vendor.toUpperCase()}: {vendor.price} {currency} 
                             </Button>
                             <IconButton
+                                style={{marginLeft: "2vw"}}
                                 aria-label="github"
                                 component="a"
                                 target="_blank" 
@@ -94,6 +95,7 @@ export default function ProductCard(props) {
             </CardActions>
             <CardActions >
                 <IconButton
+                    style={{marginLeft: "2vw"}}
                     aria-label="github"
                     component="a"
                     target="_blank" 
@@ -102,7 +104,7 @@ export default function ProductCard(props) {
                 </IconButton>
                 <div style={{maxWidth: "200px"}}>
                     <FacebookProvider appId="620534005365040">
-                        <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces  share />
+                        <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
                     </FacebookProvider>
                 </div>
             </CardActions>
