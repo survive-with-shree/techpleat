@@ -8,6 +8,7 @@ import { textAlign } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { FacebookProvider, Like, Comments } from 'react-facebook';
 
@@ -206,7 +207,7 @@ export default class Category extends React.Component {
     } else {
       return (
         <Grid container item md={12}>
-          Loading...
+          <LinearProgress />
         </Grid>
       )
     }

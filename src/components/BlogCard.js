@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   card: {
     display: 'flex',
     width: '100%',
-    margin: "1vh"
+    margin: "0.05vw"
   },
   details: {
     width: '100%',
@@ -49,9 +49,11 @@ export default function BlogCard(props) {
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
                         {calendarDate} | {item.author}
-                        <FacebookProvider appId="620534005365040">
-                            <Like href={`https://techpleat.com/?cid=${cid}&bid=${item.id}`} colorScheme="dark" showFaces share />
-                        </FacebookProvider> 
+                        <div>
+                          <FacebookProvider appId="620534005365040">
+                            <Like href={`https://techpleat.com/?cid=${cid}&bid=${item.id}`} colorScheme="dark" layout="button_count" share width="120px" />
+                          </FacebookProvider>
+                        </div>
                     </Typography>
                 </CardContent>
             </div>

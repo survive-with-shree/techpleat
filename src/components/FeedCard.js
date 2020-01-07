@@ -50,10 +50,10 @@ export default function FeedCard(props) {
                             </a>
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary">
-                            {calendarDate} 
+                            {calendarDate}
                             <br/>
                             {item.author}
-                            <div style={{marginLeft: "-30px"}}>
+                            <div>
                                 <FacebookProvider appId="620534005365040">
                                     <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" layout="button_count" share width="120px" />
                                 </FacebookProvider>

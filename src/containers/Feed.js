@@ -13,6 +13,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import * as URL from '../utils/url';
 import s from '../styles/feed.style';
@@ -115,7 +116,8 @@ export default class Feed extends React.Component {
                 <Grid container item
                   id={category} 
                   md={12}
-                  key={index} style={s.feed}
+                  key={index}
+                  style={s.feed}
                   style={{
                     margin: "0.5vh",
                     top: "50%",
@@ -270,14 +272,13 @@ export default class Feed extends React.Component {
                 </FacebookProvider>
               </Grid>
             </Grid>
-            
           </Grid>
         </Grid>
       )
     } else {
       return (
         <Grid container item md={12} style={s.column}>
-          Loading... {fid} {cid}
+          <LinearProgress />
         </Grid>
       )
     }

@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import { FacebookProvider, Comments, Like } from 'react-facebook';
 import IconButton from '@material-ui/core/IconButton';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import Button from '@material-ui/core/Button';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import * as URL from '../utils/url';
 import s from '../styles/category.style';
@@ -81,10 +83,10 @@ export default class Category extends React.Component {
           <Grid container item 
             md={12}
             style={{
-            marginBottom: "1vh",
-            justifyContent: "center", 
-            top: "50%",
-            backgroundColor: "#ffffff73"}} >
+              marginBottom: "1vh",
+              justifyContent: "center", 
+              top: "50%",
+              backgroundColor: "#ffffff73"}} >
             <h1 style={{
               background: "linear-gradient(to top, rgb(287, 35, 337), rgb(229, 57, 53))", 
               webkitBackgroundClip: "text", 
@@ -145,17 +147,26 @@ export default class Category extends React.Component {
             <Card style={s.md}>
                 <Markdown source={this.state.md} />
                 <br/>
-                <IconButton
-                  style={{marginLeft: "2vw"}}
-                  aria-label="github"
-                  component="a"
-                  target="_blank" 
-                  href={`${URL.git}category/${cid}/blog/${bid}.md`}>
-                  <GitHubIcon fontSize="inherit" />
-                </IconButton>
-                <FacebookProvider appId="620534005365040">
-                    <Like href={`https://techpleat.com/?cid=${cid}&bid=${item.id}`} colorScheme="dark" showFaces share />
-                </FacebookProvider>
+                <br/>
+                <Grid container item md={12} style={{ marginTop: "2vh"}}>
+                  <Grid item md={4}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      aria-label="github"
+                      component="a"
+                      target="_blank" 
+                      href={`${URL.git}category/${cid}/blog/${bid}.md`}
+                      startIcon={<GitHubIcon />}>
+                      Update article
+                    </Button>
+                  </Grid>
+                  <Grid item md={6}>
+                    <FacebookProvider appId="620534005365040">
+                      <Like href={`https://techpleat.com/?cid=${cid}&bid=${item.id}`} colorScheme="dark" showFaces share />
+                    </FacebookProvider>
+                  </Grid>
+                </Grid>
             </Card>
           </Grid>
           <Grid container item md={12} style={s.column}>
@@ -170,8 +181,7 @@ export default class Category extends React.Component {
     } else {
       return (
         <Grid container item md={12} style={s.column}>
-          Loading... {bid} {cid}
-          {JSON.stringify(this.state)}
+          <LinearProgress />
         </Grid>
       )
     }
