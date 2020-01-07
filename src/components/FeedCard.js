@@ -68,7 +68,7 @@ export default function FeedCard(props) {
                             <a href={`/?cid=${cid}&fid=${item.id}`} style={{textAlign: "center"}}>
                                 <b>{item.title}</b>
                             </a>
-                            <div style={{marginLeft: "-78px", width: "100px", height: "20px", marginTop: "2vh"}}>
+                            <div style={{width: "100px", height: "20px", marginTop: "2vh"}}>
                                 <FacebookProvider appId="620534005365040">
                                     <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" layout="button_count" width="120px" />
                                 </FacebookProvider>

@@ -35,6 +35,7 @@ s.row = {
 }
 
 s.md = {
+  marginRight: "0.5vh",
   padding: "10px"
 }
 

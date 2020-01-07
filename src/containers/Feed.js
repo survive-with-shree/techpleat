@@ -231,35 +231,47 @@ export default class Feed extends React.Component {
                 <GitHubIcon fontSize="inherit" />
               </IconButton>
             </h1>
-
           </Grid>
-          <Grid container item md={2} style={s.column}></Grid>
-        
-          <Grid container item md={8} style={s.column}>
-            <Card style={s.md}>
-              <Markdown source={this.state.md} />
-              <br/>
-              <IconButton
-                style={{marginLeft: "2vw"}}
-                aria-label="github"
-                component="a"
-                target="_blank" 
-                href={`${URL.git}category/${cid}/feed/${fid}.md`}>
-                <GitHubIcon fontSize="inherit" />
-              </IconButton>
-              <FacebookProvider appId="620534005365040">
-                <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
-              </FacebookProvider>
-            </Card> 
-          </Grid>
-          
-          <Grid item md={12} style={s.row}>
-            <FacebookProvider appId="620534005365040">
-              <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
-              <Comments href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} />
-            </FacebookProvider>
-          </Grid>
+          <Grid container item md={12}>
+            <Grid container item md={2}>
+              <iframe
+                style={{width:"100%"}}
+                src={`data:text/html,<script defer="true" src="https://github.com/techpleat/techpleat/contributors-list/master/docs/category/${cid}/feed/index.json"></script>`}
+                frameBorder='0'>
+              </iframe>
+            </Grid>
+            <Grid container item md={8}>
+              <Card style={s.md}>
+                <Markdown source={this.state.md} />
+                <br/>
+                <Grid container item md={12} style={{ marginTop: "2vh"}}>
+                  <Grid item md={4}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      aria-label="github"
+                      component="a"
+                      target="_blank" 
+                      href={`${URL.git}category/${cid}/feed/${fid}.md`}
+                      startIcon={<GitHubIcon />}>
+                      Update article
+                    </Button>
+                  </Grid>
+                  <Grid item md={6}>
+                    <FacebookProvider appId="620534005365040">
+                      <Like href={`https://techpleat.com/?cid=${cid}&fid=${Number.parseInt(item.id)%10}`} colorScheme="dark" showFaces share />
+                    </FacebookProvider>
+                  </Grid>
+                </Grid>
+              </Card>
+              <Grid container item md={12} style={{ marginTop: "2vh"}}>
+                <FacebookProvider appId="620534005365040">
+                  <Comments href={`https://techpleat.com/?cid=${cid}&fid=${item.id}`} />
+                </FacebookProvider>
+              </Grid>
+            </Grid>
             
+          </Grid>
         </Grid>
       )
     } else {
