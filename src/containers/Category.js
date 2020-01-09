@@ -120,6 +120,10 @@ export default class Category extends React.Component {
     } else if (item != null) {
       let windowTitle = `${item.name}`
       document.title = windowTitle
+      let timeline = this.state.timeline.sort((a, b) => {
+        return a["timestamp"] - b["timestamp"];
+      })
+
       return (
         <Grid container item md={12}>
           <Grid container item 
@@ -192,7 +196,7 @@ export default class Category extends React.Component {
                 <GitHubIcon fontSize="inherit" />
               </IconButton>
               <Grid item md={12}>
-                {this.state.timeline.map((event, index) => <Timeline event={event} key={index}/>)}
+                {timeline.map((event, index) => <Timeline event={event} key={index}/>)}
               </Grid>
             </Typography>
             

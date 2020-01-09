@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import { textAlign } from '@material-ui/system';
 import Typography from '@material-ui/core/Typography';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import { FacebookProvider, Comments, Like } from 'react-facebook';
 import Fab from '@material-ui/core/Fab';
@@ -47,7 +48,7 @@ export default class CategoryListing extends React.Component {
     return (
       <Grid container item>
         {this.state.categories.map((category, index) => (
-          <Grid container item md={3} sm={4} key={index}>
+          <Grid container item lg={2} md={3} sm={4} xs={12} key={index}>
             <Grid container item
               id={category} 
               md={12}
@@ -72,18 +73,11 @@ export default class CategoryListing extends React.Component {
                 </h1>
               </Grid>
               <Grid container item md={12} key={index} style={{paddingLeft: "1vh", paddingTop: "0.75vw"}}>
-                <div style={{paddingRight: "1vw"}}>
-                  <Button disableElevation size="small" variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&pid=_`}> {category} Gallery
-                  </Button>
-                </div>
-                <div style={{paddingRight: "1vw"}}>
-                  <Button disableElevation size="small"  variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&fid=_`}> Feed
-                  </Button>
-                </div>
-                <div style={{paddingRight: "1vw"}}>
-                  <Button disableElevation size="small" variant="outlined" color="primary" href={`/?cid=${category.toLowerCase()}&bid=_`}> Blog 
-                  </Button> 
-                </div>
+                <ButtonGroup size="small" color="primary" aria-label="outlined primary button group" style={{height: "30px"}}>
+                  <Button href={`/?cid=${category.toLowerCase()}&pid=_`}> Gallery </Button>
+                  <Button href={`/?cid=${category.toLowerCase()}&fid=_`}> Feed </Button>
+                  <Button href={`/?cid=${category.toLowerCase()}&bid=_`}> Blog </Button> 
+                </ButtonGroup>                
               </Grid>
             </Grid>
           </Grid>

@@ -85,15 +85,6 @@ export default function ProductCard(props) {
                 }
             </CardContent>
             <CardActions >
-                <div>
-                    {!props.seller &&
-                        <Button href={`/?cid=${cid}&pid=${item.id}`} size="small" color="primary">
-                            Learn More
-                        </Button>
-                    }
-                </div>
-            </CardActions>
-            <CardActions >
                 <IconButton
                     style={{marginLeft: "2vw"}}
                     aria-label="github"
